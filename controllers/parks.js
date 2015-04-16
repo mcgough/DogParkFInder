@@ -7,11 +7,7 @@ var async = require('async');
 var fourSq = process.env.FSquare_Client;
 var fourSqSec = process.env.FSquare_Secret;
 
-var options = {
-  APIKey: process.env.ForecastKey,
-  timeout: 1000
-}
-var forecast = new Forecast(options);
+
 
 router.get('/:id',function(req,res){
   var user = req.getUser();
