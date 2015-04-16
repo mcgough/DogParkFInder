@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var request = require('request');
-var Forecast = require('forecast.io');
 var db = require('../models');
 var async = require('async');
 
