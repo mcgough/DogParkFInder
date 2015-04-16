@@ -1,0 +1,37 @@
+{
+  "name": "Project-1",
+  "version": "1.0.0",
+  "description": "WDI Seattle first project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mcgough/Project-1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mcgough/Project-1/issues"
+  },
+  "homepage": "https://github.com/mcgough/Project-1",
+  "dependencies": {
+    "async": "^0.9.0",
+    "bcrypt": "^0.8.2",
+    "body-parser": "^1.12.2",
+    "connect-flash": "^0.1.1",
+    "ejs": "^2.3.1",
+    "express": "^4.12.3",
+    "express-session": "^1.11.1",
+    "flash": "^1.1.0",
+    "forecast.io": "0.0.9",
+    "instagram-node": "^0.5.6",
+    "pg": "^4.3.0",
+    "pg-hstore": "^2.3.2",
+    "request": "^2.55.0",
+    "sequelize": "^2.0.5",
+    "sequelize-cli": "^1.6.0",
+    "serialize": "^0.1.3"
+  }
+}

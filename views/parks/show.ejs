@@ -1,0 +1,108 @@
+<% include ../partials/header.ejs %>
+
+<h2>Parks Page</h2>
+
+<div class='row'>
+  <div class='col-md-6'>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Park Name</th>
+          <th>Address</th>
+          <th>Dogs playing</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+       <% for(var i = 0; i < venues.venues.length; i++){ %>
+        <% if(venues.venues[i].name !== 'Dog Park' && venues.venues[i].categories[0].name === 'Dog Run' || venues.venues[i].categories[0].name === "Dog Park"){ %>
+        <tr>
+          <td class='hidden-val'><p class='park-name'><%= venues.venues[i].name %></p><input type='hidden' class='latlong' value='<%= venues.venues[i].location.lat %>,<%= venues.venues[i].location.lng %>'></td>
+          <td><%= venues.venues[i].location.formattedAddress %></td>
+          <td><p class='numDogs'></p></td>
+          <td><form action='/favorites/fav' method='post' class='hidden-form'><input type='hidden' name='name' value='<%= venues.venues[i].name %>'><input type='hidden' name='address' value='<%= venues.venues[i].location.formattedAddress %>'><input type='hidden' name='lat' value='<%= venues.venues[i].location.lat %>'><input type='hidden' name='long' value='<%= venues.venues[i].location.lng %>'>
+          <% if(user){ %>
+          <button type='submit' class='btn btn-primary favorite'>Favorite</button></form>
+          <% }else{ %><button type='submit' class='btn btn-primary hidden'>Favorite</button></form>
+            <% } %>
+        </tr>
+          <% }else if(venues.venues.length === 0) { %>
+              <tr>
+                <td>
+                  <h2>Sorry no parks were found in that city</h2>
+                </td>
+              </tr>
+            <% } %>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+  <div class='col-md-6'>
+    <div id="map-canvas"></div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+var parks = <%-JSON.stringify(dogParks) %>
+var checks = <%-JSON.stringify(times) %>
+console.log('checks',checks)
+var currentTimeMin = (new Date().getTime() / 1000 / 3600 * 60);
+checkins = {};
+for(var i = 0; i < parks.length;i++){
+  for(var j = 0; j < checks.length;j++){
+    if(parks[i].id === checks[j].parkid){
+      if(!checkins[parks[i].name]){
+        checkins[parks[i].name] = [checks[j].time];
+      }else{
+        checkins[parks[i].name].push(checks[j].time);
+      }
+    }
+  }
+}
+console.log(checkins);
+var validCheckins = {};
+for(var key in checkins){
+  checkins[key].forEach(function(time){
+    if(currentTimeMin - (time / 1000 / 3600 * 60) <= 60){
+      if(!validCheckins[key]){
+        validCheckins[key] = [key];
+      }else{
+        validCheckins[key].push(key);
+      }
+    }
+  })
+}
+$(function(){
+  var header = $('.welcome');
+  var parkName = $('.park-name').text();
+  // console.log('parkName',parkName);
+  for(var key in validCheckins){
+    if(parkName.indexOf(key) !== -1){
+      if(validCheckins[key].length > 0){
+        console.log('key',key,validCheckins[key].length)
+        $('.numDogs').each(function(){
+          if($(this).closest('.park-name').text() === key){
+            console.log($(this).closest('.park-name').text());
+          }
+        })
+  //       $('.dogs').html('<p>There are ' + validCheckins[key].length + ' dogs checked in currently in at ' + key + '</p>');
+  //     }else{
+  // //       $('.dogs').html('<p>There is ' + validCheckins[key].length + ' dog checked in currently in at ' + key +  '</p>');
+  //       console.log('key',key,validCheckins[key].length);
+      }
+    }
+  }
+})
+
+console.log('validCheckins',validCheckins);
+var list =  parks.map(function(name){
+  return name.name;
+})
+
+editList(list);
+parksMap();
+</script>
+<% include ../partials/footer.ejs %>
+
+

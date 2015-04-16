@@ -1,0 +1,26 @@
+<% include ../partials/header.ejs %>
+
+
+<form action="/auth/login" method="POST" role="form" id='login-form'>
+
+  <legend>Log In</legend>
+
+  <div class="form-group">
+    <label for="">Email</label>
+    <input type="text" name='email' class="form-control" id="" placeholder="Enter email">
+    <label for="">Password</label>
+    <input type="text" name='password' class="form-control" id="" placeholder="Enter password">
+  </div>
+
+
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+
+
+
+
+
+<% include ../partials/footer.ejs %>

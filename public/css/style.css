@@ -1,0 +1,28 @@
+.container {
+  width: 90%;
+  /*background: white;*/
+}
+#header-list {
+  text-align: right;
+}
+#main-title {
+  margin-top: 15%;
+}
+#login-form,
+#reg-form,
+#main-search {
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 5%;
+}
+#map-canvas {
+width: 410px;
+height: 450px;
+}
+#user-map {
+  width: 410px;
+  height: 450px;
+}
+.alerts {
+  margin-bottom: 0;
+}

@@ -1,0 +1,97 @@
+<% include ../partials/header.ejs %>
+<div class='row text-center'>
+  <% if(user) { %>
+<h2 class='welcome'>Welcome back, <b><%= typeof user.username === 'string' ? user.username : 'Unknown' %></b>!</h2>
+<h4 class='no-dogs'>There are no dogs playing at your favorite parks right now</h4>
+<% } %>
+</div>
+
+
+<div class='row'>
+<div class='col-md-6'>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Park name</th>
+      <th>Address</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for(var i = 0; i < parks.length; i++){ %>
+    <tr>
+      <td class='userFavParkName'><%= parks[i].name %></td>
+      <td><%= parks[i].address %>
+      <td>
+        <form action='/favorites/checkin' method='post' class='checkin-form'>
+        <input type='hidden' name='parkid' value='<%= parks[i].id %>'>
+        <input type='hidden' name='userid' value='<%= user.id %>'>
+        <button type='submit' class='btn btn-primary checkin-button'>CheckIn</button>
+        <button type='submit' class='btn btn-danger checkedin-button hidden'>CheckOut</button>
+        </form>
+      </td>
+      <td>
+        <a href='/favorites/remove' class='btn btn-danger remove-button'><i class='glyphicon glyphicon-trash danger'></i></a>
+
+      </td>
+    </tr>
+    <% } %>
+  </tbody>
+</table>
+</div>
+<div class='col-md-6'>
+  <div id='user-map'></div>
+</div>
+</div>
+<script type="text/javascript">
+  var dogRuns = <%- JSON.stringify(parks) %>
+  var checks = <%- JSON.stringify(times) %>
+  checkins = {};
+  for(var i = 0; i < dogRuns.length;i++){
+    for(var j = 0; j < checks.length;j++){
+      if(dogRuns[i].id === checks[j].parkid){
+        if(!checkins[dogRuns[i].name]){
+          checkins[dogRuns[i].name] = [checks[j].time];
+        }else{
+          checkins[dogRuns[i].name].push(checks[j].time);
+        }
+      }
+    }
+  }
+  var currentTimeMin = (new Date().getTime() / 1000 / 3600 * 60);
+  var validCheckins = {};
+  for(var key in checkins){
+    checkins[key].forEach(function(time){
+      if(currentTimeMin - (time / 1000 / 3600 * 60) <= 60){
+        if(!validCheckins[key]){
+          validCheckins[key] = [key];
+        }else{
+          validCheckins[key].push(key);
+        }
+      }
+    })
+  }
+  $(function(){
+    var header = $('.welcome');
+    var parkName = $('.userFavParkName').text();
+    console.log(parkName);
+
+    for(var key in validCheckins){
+      if(parkName.indexOf(key) !== -1){
+        $('.no-dogs').hide();
+        if(validCheckins[key].length > 1){
+          header.append('<h4>' + key + ' has ' + validCheckins[key].length + ' dogs playing right now</h4> ');
+        }else{
+          header.append('<h4>There is ' + validCheckins[key].length + ' dog currently playing at ' + key +  '</h4>');
+        }
+      }
+    }
+  })
+  console.log(validCheckins);
+  userMap(dogRuns);
+  console.log(new Date().getTime() / 1000 / 3600);
+
+</script>
+
+
+
+<% include ../partials/footer.ejs %>
