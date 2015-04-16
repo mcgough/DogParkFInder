@@ -1,7 +1,6 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
-var Forecast = require('forecast.io');
 var request = require('request');
 var session = require('express-session');
 var flash = require('connect-flash');
