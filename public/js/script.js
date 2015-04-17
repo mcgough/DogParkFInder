@@ -37,8 +37,8 @@ $(function(){
   })
 
   $('.numDogs').each(function(){
-    if($(this).text === 'none'){
-      $(this).css('color','#49fb35')
+    if($(this).text !== 'none'){
+      $(this).css('color','green');
     }
   })
 
