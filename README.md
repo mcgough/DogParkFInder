@@ -1,4 +1,4 @@
-http://www.dogparkfinder.herokuapp.com
+http://dogparkfinder.herokuapp.com/
 
 # Project-1
 WDI Seattle first project
