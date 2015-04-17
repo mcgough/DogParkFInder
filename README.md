@@ -6,5 +6,5 @@ WDI Seattle first project
 -google maps<br>
 -foursquare/search
 #Basic idea of app
--Dog park checkin app, that allows the user to search for dog parks by city name using the foursquare/search api.
- Besides checking in, the user can favorite parks and and see how many people have checked in at park within the last  hour.
+-Dog park checkin app, that allows the user to search for dog parks by city name using the foursquare/search api.<br>
+  Besides checking in, the user can favorite parks and and see how many people have checked in at park within the last<br>  hour.
