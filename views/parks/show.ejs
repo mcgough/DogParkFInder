@@ -87,7 +87,7 @@ for(var i = 0; i < parks.length;i++){
 var validCheckins = {};
 for(var key in checkins){
   checkins[key].forEach(function(time){
-    if(currentTimeMin - (time / 1000 / 3600 * 60) <= 60){
+    if(currentTimeMin - (time / 1000 / 3600 * 60) <= 720){
       if(!validCheckins[key]){
         validCheckins[key] = [key];
       }else{
