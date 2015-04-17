@@ -36,7 +36,7 @@ $(function(){
     }
   })
 
-  if($('.welcome') || $('.error') || $('.results')){
+  if($('.welcome') || $('.error')){
     $('#header-search').focus();
   }
 })
