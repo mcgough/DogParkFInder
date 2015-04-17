@@ -40,6 +40,7 @@ $(function(){
     if($(this).text !== '0'){
       $(this).css('color','green')
     }
+  })
 
 })
 
