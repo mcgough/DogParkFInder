@@ -36,11 +36,6 @@ $(function(){
     }
   })
 
-  $('.numDogs').each(function(){
-    if($(this).text !== 'none'){
-      $(this).css('color','green');
-    }
-  })
 
 })
 
