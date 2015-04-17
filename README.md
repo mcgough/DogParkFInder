@@ -1,7 +1,7 @@
 # Project-1
 WDI Seattle first project
 #Requirements
--build an express app in a week that calls at least one api and use postgres and with sequelize to build the database
+-build an express app in a week that calls at least one api and use postgres with sequelize to build the database
 #Api's used
 -google maps<br>
 -foursquare/search
