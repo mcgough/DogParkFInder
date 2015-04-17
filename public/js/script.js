@@ -36,9 +36,6 @@ $(function(){
     }
   })
 
-  if($('.welcome') || $('.error')){
-    $('#header-search').focus();
-  }
 })
 
 
