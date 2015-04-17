@@ -3,7 +3,7 @@ WDI Seattle first project
 #Requirements
 -build an express app in a week that calls at least one api and use postgres and with sequelize to build the database
 #Api's used
--google maps
+-google maps<br>
 -foursquare/search
 #Basic idea of app
 -Dog park checkin app, that allows the user to search for dog parks by city name using the foursquare/search api.
