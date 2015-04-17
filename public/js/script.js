@@ -1,16 +1,70 @@
 $(function(){
-
-  $('.checkin-form').on('click',function(e){
+  $('#main-input').focus();
+  $('#login-email').focus();
+  $('#reg-email').focus();
+  $('.add-form').on('click',function(e){
     e.preventDefault();
     var form = $(this);
     $.ajax({
-      method: $(form).attr('method'),
-      url: $(form).attr('action'),
-      data: $(form).serialize()
+      method: form.attr('method'),
+      url: form.attr('action'),
+      data: form.serialize()
     }).done(function(){
-      console.log('success');
-      form.next('.checkedin-button').removeClass('hidden');
-      form.next('.checkin-button').addClass('hidden');
+      form.parent().parent().fadeOut();
+    })
+  })
+
+  // $('.checkin-form').on('click',function(e){
+  //   e.preventDefault();
+  //   var form = $(this);
+  //   $.ajax({
+  //     method: form.attr('method'),
+  //     url: form.attr('action'),
+  //     data: form.serialize()
+  //   }).done(function(){
+  //     console.log('success');
+  //     // form.children('button').eq(1).removeClass('hidden');
+  //     $('.checkin-button').each(function(){
+  //       $(this).addClass('hidden');
+  //     });
+  //     $('.checkout-button').each(function(){
+  //       $(this).removeClass('hidden');
+  //     })
+  //     form.parent().parent().siblings().hide();
+  //   })
+  // })
+
+  // $('.checkout-form').on('click',function(e){
+  //   e.preventDefault();
+  //   var form = $(this);
+  //   $.ajax({
+  //     method: form.attr('method'),
+  //     url: form.attr('action'),
+  //     data: form.serialize()
+  //   }).done(function(){
+  //     console.log('deleted?');
+  //     $('.checkout-button').each(function(){
+  //       $(this).addClass('hidden');
+  //     })
+  //     $('.checkin-button').each(function(){
+  //       $(this).removeClass('hidden');
+  //     })
+  //     form.parent().parent().siblings().show();
+  //   })
+  // })
+
+  $('.remove-form').on('click',function(e){
+    e.preventDefault();
+    var form = $(this);
+    $.ajax({
+      method: form.attr('method'),
+      url: form.attr('action'),
+      data: form.serialize()
+    }).done(function(){
+      form.parent().parent().fadeOut();
+      $('.checkin-button').each(function(){
+        $(this).removeClass('hidden');
+      })
     })
   })
 

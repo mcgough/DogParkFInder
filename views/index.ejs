@@ -1,24 +1,19 @@
 <% include partials/header.ejs %>
 
-
-<h1 id='main-title' class='text-center'>Dog Park Checkin</h1>
-
+<div class='row text-center'>
+<h1 id='main-title' class='text-center'>Top Dog</h1>
+<img src='/images/bulldog.png' class='text-center home-image'>
+</div>
 <form action="/parks/:id" method="get" role="form" id='main-search'>
-  <legend class='text-center'>Find dog friendly parks in your city</legend>
 
   <div class="form-group">
  <!--    <label for="">label</label> -->
-    <input type="text" class="form-control" name='q' id="" placeholder="Search for parks in your city">
+    <input type="text" class="form-control" name='q' id="main-input" placeholder="Search for parks in your city or around the world">
   </div>
 <div class='text-center'>
-<button type="submit" class="btn btn-primary">Submit</button>
+<button type="submit" class="btn btn-default">Submit</button>
 
 
-<% if(user){ %>
-<a href='/auth/register' class='btn btn-primary hidden'>Register</a>
-<% }else{ %>
-<a href='/auth/register' class='btn btn-primary'>Register</a>
-<% } %>
 </div>
 </form>
 

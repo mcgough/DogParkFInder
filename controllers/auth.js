@@ -22,8 +22,8 @@ router.post('/login',function(req,res){
             username: user.username,
             parkid: user.parkid
           };
-          req.flash('success',user.username + '! You are now logged in.')
-          res.redirect('/');
+          // req.flash('success',user.username + '! You are now logged in.')
+          res.redirect('/favorites/index');
         }else{
           req.flash('danger','Invalid password.');
           res.redirect('/');
@@ -37,7 +37,13 @@ router.post('/login',function(req,res){
   });
 });
 
+router.get('/login',function(req,res){
+  var user = req.getUser();
+  res.render('auth/login',{user:user});
+})
+
 router.post('/register',function(req,res){
+  var user = req.getUser();
   var userQuery = {email:req.body.email};
   var userData = {
     email:req.body.email,
@@ -46,7 +52,7 @@ router.post('/register',function(req,res){
   }
   db.user.findOrCreate({where: userQuery,defaults: userData}).spread(function(user,created){
     if(created){
-      res.redirect('auth/login');
+      res.render('auth/login',{user:user});
     }else{
       req.flash('danger','email already exists');
       res.redirect('/')
@@ -58,10 +64,6 @@ router.post('/register',function(req,res){
   })
 })
 
-router.get('/login',function(req,res){
-  var user = req.getUser();
-  res.render('auth/login',{user:user});
-})
 
 router.get('/logout',function(req,res){
   delete req.session.user;

@@ -1,51 +1,97 @@
 <% include ../partials/header.ejs %>
+<% if(parks.length === 0){ %>
 <div class='row text-center'>
-  <% if(user) { %>
-<h2 class='welcome'>Welcome back, <b><%= typeof user.username === 'string' ? user.username : 'Unknown' %></b>!</h2>
-<h4 class='no-dogs'>There are no dogs playing at your favorite parks right now</h4>
-<% } %>
+<h2 class='welcome'>Welcome, <b><%= typeof user.username === 'string' ? user.username : 'Unknown' %></b>!</h2>
+<p class='welcome-text'>It appears that this is your first time using <em><b>Top Dog</b></em>. Go ahead and search your area for dog parks using the tool above. After you have favorited the parks you visit frequently, you can than use <em><b>Top Dog</b></em> to see if other dogs are there before you decide to go, or you can check in to let other owners know that you are there. <br><br><b>Have fun!<b></p>
+</div>
+<% }else{ %>
+<div class='row text-center'>
+<div class='col-md-6'>
+<h2 class='welcome-old'>Welcome back, <b><%= typeof user.username === 'string' ? user.username : 'Unknown' %></b>!</h2>
+</div>
+
 </div>
 
 
 <div class='row'>
-<div class='col-md-6'>
+<div class='col-md-7'>
+<div class='table-scroll' style='overflow-y: scroll; height: 500px;'>
 <table class="table table-hover">
   <thead>
     <tr>
       <th>Park name</th>
       <th>Address</th>
+      <th>Dogs Playing</th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <% for(var i = 0; i < parks.length; i++){ %>
     <tr>
-      <td class='userFavParkName'><%= parks[i].name %></td>
-      <td><%= parks[i].address %>
+      <td><p class='park-name'><%= parks[i].name %></p></td>
+      <td><a href='https://www.google.com/maps/place/<%= parks[i].address %>'><%= parks[i].address %></a></td>
+      <td><p class='numDogs'>none</p></td>
       <td>
         <form action='/favorites/checkin' method='post' class='checkin-form'>
         <input type='hidden' name='parkid' value='<%= parks[i].id %>'>
         <input type='hidden' name='userid' value='<%= user.id %>'>
         <button type='submit' class='btn btn-primary checkin-button'>CheckIn</button>
-        <button type='submit' class='btn btn-danger checkedin-button hidden'>CheckOut</button>
         </form>
       </td>
       <td>
-        <a href='/favorites/remove' class='btn btn-danger remove-button'><i class='glyphicon glyphicon-trash danger'></i></a>
-
+        <form action='/favorites/checkout' method='post' class='checkout-form'>
+          <input type='hidden' name='parkid' value='<%= parks[i].id %>'>
+          <input type='hidden' name='userid' value='<%= user.id %>'>
+          <button type='submit' class='btn btn-success checkout-button hidden'>CheckOut</button>
+        </form>
+      </td>
+      <td>
+      <form action='/favorites/remove' method='post' class='remove-form'>
+          <input type='hidden' name='parkid' value='<%= parks[i].id %>'>
+          <input type='hidden' name='userid' value='<%= user.id %>'>
+          <button type='submit' class='btn btn-danger remove-button'><i class='glyphicon glyphicon-trash danger'></i></button>
+      </form>
       </td>
     </tr>
     <% } %>
   </tbody>
 </table>
 </div>
-<div class='col-md-6'>
+</div>
+<div class='col-md-5 map-div'>
   <div id='user-map'></div>
 </div>
 </div>
+    <% } %>
 <script type="text/javascript">
   var dogRuns = <%- JSON.stringify(parks) %>
   var checks = <%- JSON.stringify(times) %>
+  var user = <%- JSON.stringify(user) %>
+  console.log('!!!!!!!',checks);
+
   checkins = {};
+  for(var i = 0; i < checks.length; i++){
+   if(checks[i].userid === user.id){
+    for(var j = 0; j < dogRuns.length;j++){
+      if(checks[i].parkid === dogRuns[j].id){
+        console.log('here', dogRuns[j].name);
+        $('.park-name').each(function(){
+          if($(this).text() === dogRuns[j].name){
+            // console.log('yes',$(this))
+            console.log('!!!!',$(this).parent().parent().children().eq(4));
+            $(this).parent().parent().siblings().hide();
+            $(this).parent().parent().children().eq(3).addClass('hidden');
+            $(this).parent().parent().children($('.checkout-button').removeClass('hidden'));
+          }else{
+            console.log('no')
+          }
+        })
+
+      }
+    }
+   }
+  }
   for(var i = 0; i < dogRuns.length;i++){
     for(var j = 0; j < checks.length;j++){
       if(dogRuns[i].id === checks[j].parkid){
@@ -70,22 +116,26 @@
       }
     })
   }
-  $(function(){
-    var header = $('.welcome');
-    var parkName = $('.userFavParkName').text();
-    console.log(parkName);
-
-    for(var key in validCheckins){
-      if(parkName.indexOf(key) !== -1){
-        $('.no-dogs').hide();
-        if(validCheckins[key].length > 1){
-          header.append('<h4>' + key + ' has ' + validCheckins[key].length + ' dogs playing right now</h4> ');
-        }else{
-          header.append('<h4>There is ' + validCheckins[key].length + ' dog currently playing at ' + key +  '</h4>');
+$(function(){
+  var header = $('.welcome');
+  var parkName = $('.park-name').text();
+  console.log('parkName',parkName);
+  for(var key in validCheckins){
+    if(parkName.indexOf(key) !== -1){
+    $('.no-dogs').hide();
+      console.log('key',key,validCheckins[key].length)
+      var count = 0;
+      $('.park-name').each(function(){
+        if($(this).text().indexOf(key) !== -1){
+          $('.numDogs').eq(count).text(validCheckins[key].length);
+          // console.log($(this));
         }
-      }
-    }
-  })
+        count++;
+      })
+    };
+  }
+})
+
   console.log(validCheckins);
   userMap(dogRuns);
   console.log(new Date().getTime() / 1000 / 3600);
