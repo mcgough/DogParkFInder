@@ -98,6 +98,150 @@ function userMap(markers){
   google.maps.event.addDomListener(window, 'load', initialize);
 }
 
+////index.ejs script
+function indexJs(){
+  checkins = {};
+  for(var i = 0; i < checks.length; i++){
+   if(checks[i].userid === user.id){
+    for(var j = 0; j < dogRuns.length;j++){
+      if(checks[i].parkid === dogRuns[j].id){
+        console.log('here', dogRuns[j].name);
+        $('.park-name').each(function(){
+          if($(this).text() === dogRuns[j].name){
+            // console.log('yes',$(this))
+            console.log('!!!!',$(this).parent().parent().children().eq(4));
+            $(this).parent().parent().siblings().hide();
+            $(this).parent().parent().children().eq(3).addClass('hidden');
+            $(this).parent().parent().children($('.checkout-button').removeClass('hidden'));
+          }else{
+            console.log('no')
+          }
+        })
+
+      }
+    }
+   }
+  }
+  for(var i = 0; i < dogRuns.length;i++){
+    for(var j = 0; j < checks.length;j++){
+      if(dogRuns[i].id === checks[j].parkid){
+        if(!checkins[dogRuns[i].name]){
+          checkins[dogRuns[i].name] = [checks[j].time];
+        }else{
+          checkins[dogRuns[i].name].push(checks[j].time);
+        }
+      }
+    }
+  }
+  var currentTimeMin = (new Date().getTime() / 1000 / 3600 * 60);
+  var validCheckins = {};
+  for(var key in checkins){
+    checkins[key].forEach(function(time){
+      if(currentTimeMin - (time / 1000 / 3600 * 60) <= 60){
+        if(!validCheckins[key]){
+          validCheckins[key] = [key];
+        }else{
+          validCheckins[key].push(key);
+        }
+      }
+    })
+  }
+  $(function(){
+    var header = $('.welcome');
+    var parkName = $('.park-name').text();
+    console.log('parkName',parkName);
+    for(var key in validCheckins){
+      if(parkName.indexOf(key) !== -1){
+      $('.no-dogs').hide();
+        console.log('key',key,validCheckins[key].length)
+        var count = 0;
+        $('.park-name').each(function(){
+          if($(this).text().indexOf(key) !== -1){
+            $('.numDogs').eq(count).text(validCheckins[key].length);
+            // console.log($(this));
+          }
+          count++;
+        })
+      };
+    }
+  })
+}
+
+function showJs(){
+  function favoriteDisplay(parks){
+    $(function(){
+      if(parks.length === 0) {
+        $('.results').addClass('hidden');
+        $('.error').removeClass('hidden');
+        $('.show-title').addClass('hidden');
+      }
+    })
+  }
+
+  favoriteDisplay(venues);
+
+  function getCheckInTimes(places,checkInData){
+    checkins = {};
+    for(var i = 0; i < parks.length;i++){
+      for(var j = 0; j < checks.length;j++){
+        if(parks[i].id === checks[j].parkid){
+          if(!checkins[parks[i].name]){
+            checkins[parks[i].name] = [checks[j].time];
+          }else{
+            checkins[parks[i].name].push(checks[j].time);
+          }
+        }
+      }
+    }
+    return checkins;
+  }
+
+  // getCheckInTimes(parks,checks)
+
+
+  // console.log('checkins',checkins);
+  function validCheckInFinder(timesObject){
+    var currentTimeMin = (new Date().getTime() / 1000 / 3600 * 60);
+    var validCheckins = {};
+    for(var key in timesObject){
+      timesObject[key].forEach(function(time){
+        if(currentTimeMin - (time / 1000 / 3600 * 60) <= 60){
+          if(!validCheckins[key]){
+            validCheckins[key] = [key];
+          }else{
+            validCheckins[key].push(key);
+          }
+        }
+      })
+    }
+    return validCheckins;
+  }
+
+  // validCheckInFinder(getCheckInTimes(park,checks));
+
+
+  // console.log(validCheckins);
+  function setPageDogCount(currentValidCheckins){
+    $(function(){
+      var header = $('.welcome');
+      var parkName = $('.park-name').text();
+      for(var key in currentValidCheckins){
+        if(parkName.indexOf(key) !== -1){
+          var count = 0;
+          $('.park-name').each(function(){
+            if($(this).text() === key){
+              console.log(key,'===',$(this).text(),'match!!!!!!!',currentValidCheckins[key].length);
+              $('.numDogs').eq(count).text(currentValidCheckins[key].length);
+            }
+            count++;
+          })
+        }
+      }
+    })
+  }
+  setPageDogCount(validCheckInFinder(getCheckInTimes(parks,checks)))
+}
+
 function editList(array){
   $(function(){
     var tableNames = $('.park-name');
