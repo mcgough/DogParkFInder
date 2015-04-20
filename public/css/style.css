@@ -124,3 +124,50 @@ box-shadow: 2px 32px 31px 5px rgba(0,0,0,0.75);
 .no-parks {
   font-size: 3em;
 }
+
+
+/*media queries*/
+
+@media (max-width: 1000px) {
+  #map-canvas,
+  #user-map {
+    display: none;
+  }
+}
+@media (max-width: 750px){
+  body {
+    font-size: 1em;
+  }
+  .main-small {
+    line-height: -3px;
+  }
+
+  #main-search,
+  #login-form,
+  #reg-form {
+    width: 75%;
+  }
+  #main-title {
+    margin-top: -25%;
+  }
+  .navbar-nav li a {
+    font-size: 2em;
+  }
+  .table-park,
+  .table-dogs {
+    font-size: 2em;
+  }
+  .numDogs,
+  .park-name {
+    font-size: 1.75em;
+  }
+
+}
+
+
+
+
+
+
+
+

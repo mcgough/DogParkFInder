@@ -3,9 +3,9 @@ var db = require('./models');
 
 
 
-db.checkin.findAll({Sinclude[db.user]}).then(function(items){
-  console.log(items);
-})
+// db.checkin.findAll({Sinclude[db.user]}).then(function(items){
+//   console.log(items);
+// })
 
 // db.checkin.create({parkId:1,userId:1}).then(function(check){
 //   console.log(check.get());
