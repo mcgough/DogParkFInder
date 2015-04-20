@@ -6,7 +6,9 @@ body {
     bottom:0px;
     left:0px;
     right:0px;
-
+}
+.alerts {
+  margin: auto;
 }
 #header-list {
   text-align: right;
@@ -14,14 +16,24 @@ body {
 .header-button {
   margin-right: 15px;
 }
+.main-index {
+  margin: auto;
+  margin-top: 7em;
+}
 #main-title {
   margin-top: 2%;
-  font-size: 7em;
+  font-size: 6.5em;
 }
 .home-image {
   height: 18em;
   width: 23em;
   margin:  0 auto ;
+}
+.main-small {
+  font-size: .3em;
+}
+.main-right {
+  margin-top:1.5em;
 }
 h1,
 h2 {
@@ -41,9 +53,16 @@ h2 {
 #register-legend {
   margin-top: 10%;
 }
-#login-form,
-#reg-form,
 #main-search {
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 2%;
+}
+.main-search-button {
+  margin-top: 1em;
+}
+#login-form,
+#reg-form {
   width: 40%;
   margin: 0 auto;
   margin-top: 2%;
@@ -52,6 +71,23 @@ h2 {
 .login-button {
   margin: 0 auto;
 }
+.contact-text {
+  font-size: 1.5em;
+}
+.contact-icon-list {
+  text-decoration: none;
+  padding: 0;
+}
+li {
+  list-style: none;
+  display: inline;
+  margin: auto;
+}
+.contact-icon {
+  width: 35px;
+  height: 35px;
+}
+
 #map-canvas {
 width: 410px;
 height: 450px;
@@ -61,7 +97,10 @@ height: 450px;
   height: 450px;
 }
 .alerts {
-  margin-bottom: 0;
+  margin: auto;
+  width: 50%;
+  margin-bottom: -1em;
+  text-align: center;
 }
 label {
   margin-top: 25px;
@@ -74,9 +113,6 @@ label {
   width: 50%;
   margin: auto;
   font-size: 1.75em;
-}
-.welcome-old {
-
 }
 #map-canvas,
 #user-map {

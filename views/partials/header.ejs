@@ -7,8 +7,8 @@
   <link rel="stylesheet" media="screen" href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
   <link rel='stylesheet' href='/css/style.css'>
   <link href='//fonts.googleapis.com/css?family=Old+Standard+TT:400,700' rel='stylesheet' type='text/css'>
-  <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
   <script src="//code.jquery.com/jquery.js"></script>
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
   <script src="//maps.googleapis.com/maps/api/js"></script>
   <script src='/js/script.js'></script>
 
@@ -16,7 +16,7 @@
 <body
   <div class='container'>
   <nav class="navbar navbar-default navbar-center" role="navigation">
-    <a class="navbar-brand" href="/">WMD</a>
+    <a class="navbar-brand" href="/">Top Dog</a>
     <ul id='header-list' class="nav navbar-nav">
     <% if(user){ %>
 
@@ -43,8 +43,44 @@
         <a href='/auth/logout' class=hidden>Log Out</a>
       </li>
       <% } %>
+      <li>
+        <a data-toggle="modal" href='#modal-id'>Contact</a>
+        <div class="modal fade" id="modal-id">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title text-center">Contact</h4>
+              </div>
+              <div class="modal-body text-center">
+                 <p class='contact-text'>Thanks for checking out <strong>Top Dog</strong>. I hope that you've enjoyed finding dog friendly parks as much as I've enjoyed working on this site. Please feel free to contact me if you have suggestions on how I can improve the experience.</p>
+                 <p class='contact-text'>Thanks!</p>
+                 <p class='contact-text'>Dan McGough</p>
+                 <ul class='contact-icon-list'>
+                   <li>
+                     <a href='mailto:mcgough.dan@gmail.com'><img src="/images/email_icon.png" class='contact-icon'></a>
+                   </li>
+                   <li>
+                      <a href='https://www.linkedin.com/pub/dan-mcgough/a3/a39/1b4'><img src='/images/linkedin.png' class='contact-icon'></a>
+                   </li>
+                   <li>
+                      <a href='https://www.facebook.com/mcgough.dan'><img src="/images/facebook.png" class='contact-icon'></a>
+                   </li>
+                    <li>
+                      <a href='https://github.com/mcgough'><img src="/images/Github.png" class='contact-icon'></a>
+                   </li>
+                 </ul>
+              </div>
+           <!--    <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div> -->
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+      </li>
     </ul>
-    <form class='pull-right'><% include alerts.ejs %></form>
+
     <form class="navbar-form navbar-right" role="search" action="/parks/:id" method="get">
       <div class="form-group">
         <input type="text" name='q' class="form-control" id='header-search' placeholder="Search for new parks">

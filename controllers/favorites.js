@@ -11,8 +11,6 @@ router.get('/index',function(req,res){
     db.checkin.findAll().then(function(list){
       list.forEach(function(time){
         times.push({time:Date.parse(time.createdAt),parkid:time.parkId,userid:time.userId});
-      // }).then(function(){
-      //   db.checkin.findAll()
       })
     }).then(function(){
       db.parksusers.findAll({where: {userId: req.session.user.id}}).then(function(joins){

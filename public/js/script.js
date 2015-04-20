@@ -51,11 +51,12 @@ function parksMap(){
       var infowindow = new google.maps.InfoWindow();
       var mapCanvas = document.getElementById('map-canvas');
       var mapOptions = {
+        scrollwheel: false,
         center: new google.maps.LatLng(newCityLat,newCityLong),
         zoom: 12,
-        styles: mapDiscreet,
+        styles: mapDiscreet
         // mapTypeId: google.maps.MapTypeId.ROADMAP
-        disableDefaultUI: true
+        // disableDefaultUI: true
       }
       var map = new google.maps.Map(mapCanvas, mapOptions)
       $('.latlong').each(function(){
@@ -81,10 +82,11 @@ function parksMap(){
 function userMap(markers){
   function initialize() {
     var mapOptions = {
+      scrollwheel:false,
       center: { lat: markers[0].lat, lng: markers[0].long},
       zoom: 12,
-      styles: mapDiscreet,
-      disableDefaultUI: true
+      styles: mapDiscreet
+      // disableDefaultUI: true
     };
     var map = new google.maps.Map(document.getElementById('user-map'), mapOptions);
     markers.forEach(function(park){

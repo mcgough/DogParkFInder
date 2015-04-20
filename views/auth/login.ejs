@@ -1,6 +1,8 @@
 <% include ../partials/header.ejs %>
 
-
+<div class='row alerts'>
+  <% include ../partials/alerts.ejs %>
+</div>
 <form action="/auth/login" method="POST" role="form" id='login-form'>
 
   <legend id='login-legend'>Log In</legend>

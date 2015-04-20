@@ -22,7 +22,6 @@ router.post('/login',function(req,res){
             username: user.username,
             parkid: user.parkid
           };
-          // req.flash('success',user.username + '! You are now logged in.')
           res.redirect('/favorites/index');
         }else{
           req.flash('danger','Invalid password.');
@@ -58,9 +57,21 @@ router.post('/register',function(req,res){
       res.redirect('/')
     }
   })
-  .catch(function(error){
-    console.log('error!',error);
-    res.send(error);
+.catch(function(error){
+    if(error){
+      if(Array.isArray(error.errors)){
+          error.errors.forEach(function(errorItem){
+              req.flash('danger',errorItem.message);
+          });
+      }else{
+          req.flash('danger','unknown error');
+          console.log('unknown error',error);
+      }
+    }else{
+      req.flash('danger','unknown error');
+      console.log('error, but no error...');
+    }
+    res.redirect('/auth/register');
   })
 })
 
