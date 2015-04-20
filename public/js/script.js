@@ -110,10 +110,11 @@ function indexJs(){
         console.log('here', dogRuns[j].name);
         $('.park-name').each(function(){
           if($(this).text() === dogRuns[j].name){
-            // console.log('yes',$(this))
-            console.log('!!!!',$(this).parent().parent().children().eq(4));
+            console.log('yes',$(this))
+            // $(this).parent().parent().children().eq(4);
             $(this).parent().parent().siblings().hide();
-            $(this).parent().parent().children().eq(3).addClass('hidden');
+            // console.log($(this).parent().parent().children().eq(3));
+            $(this).parent().parent().children().eq(2).addClass('hidden');
             $(this).parent().parent().children($('.checkout-button').removeClass('hidden'));
           }else{
             console.log('no')
