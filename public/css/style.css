@@ -48,6 +48,9 @@ h2 {
 #register-legend {
   margin-top: 10%;
 }
+legend {
+  margin-bottom: 0px;
+}
 #main-search {
   width: 60%;
   margin: 0 auto;
@@ -98,7 +101,7 @@ height: 450px;
   text-align: center;
 }
 label {
-  margin-top: 25px;
+  margin-top: 10px;
 }
 .welcome {
   margin-top: 1em;
@@ -165,6 +168,9 @@ box-shadow: 2px 32px 31px 5px rgba(0,0,0,0.75);
   .alerts {
     font-size: 10px;
     width: 75%;
+  }
+  .navbar {
+    margin-bottom: 0px;
   }
 
 }
