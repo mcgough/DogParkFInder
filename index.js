@@ -36,6 +36,11 @@ app.get('/',function(req,res){
   res.render('index',{user:user})
 })
 
+app.get('*', function(req, res){
+  var user = req.getUser();
+  res.render('error/error',{user:user});
+});
+
 app.listen(process.env.PORT || 3000);
 
 

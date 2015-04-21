@@ -1,11 +1,11 @@
 body {
   max-width: 1200px;
   font-family: 'Old Standard TT', serif;
-     position:fixed;
+ /*    position:fixed;
     top:0px;
     bottom:0px;
     left:0px;
-    right:0px;
+    right:0px;*/
 }
 .alerts {
   margin: auto;
@@ -21,7 +21,7 @@ body {
   margin-top: 7em;
 }
 #main-title {
-  margin-top: 2%;
+  margin-top: 1%;
   font-size: 6.5em;
 }
 .home-image {
@@ -147,8 +147,11 @@ box-shadow: 2px 32px 31px 5px rgba(0,0,0,0.75);
   #reg-form {
     width: 75%;
   }
-  #main-title {
+ /* #main-title {
     margin-top: -25%;
+  }*/
+  .small-remove {
+    display: none;
   }
   .navbar-nav li a {
     font-size: 2em;
