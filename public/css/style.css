@@ -167,7 +167,15 @@ box-shadow: 2px 32px 31px 5px rgba(0,0,0,0.75);
 
 }
 
-
+@media (max-width: 350px) {
+  .container {
+    width: 100%;
+  }
+  #main-title{
+    margin-top: -20%;
+    font-size: 4em;
+  }
+}
 
 
 
