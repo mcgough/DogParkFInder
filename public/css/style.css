@@ -164,6 +164,10 @@ box-shadow: 2px 32px 31px 5px rgba(0,0,0,0.75);
   .park-name {
     font-size: 1.75em;
   }
+  .alerts {
+    font-size: 10px;
+    width: 75%;
+  }
 
 }
 
@@ -174,6 +178,16 @@ box-shadow: 2px 32px 31px 5px rgba(0,0,0,0.75);
   #main-title{
     margin-top: -20%;
     font-size: 4em;
+  }
+  .show-title {
+    margin-top: auto;
+  }
+  .welcome-old {
+    margin-top: auto;
+  }
+  #register-legend,
+  #login-legend {
+    margin-top: 0px;
   }
 }
 
