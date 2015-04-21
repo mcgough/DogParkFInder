@@ -119,6 +119,23 @@ box-shadow: 2px 32px 31px 5px rgba(0,0,0,0.75);
 .no-parks {
   font-size: 3em;
 }
+.modal {
+    position: fixed;
+    top: 3%;
+    right: 3%;
+    left: 3%;
+    width: auto;
+    margin: 0;
+}
+.modal-body {
+    height: 60%;
+}
+.modal-body {
+    max-height: 350px;
+    padding: 15px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+ }
 
 
 /*media queries*/
@@ -185,7 +202,13 @@ box-shadow: 2px 32px 31px 5px rgba(0,0,0,0.75);
     margin-top: 0px;
   }
   .park-name {
-    font-size: .8em;
+    font-size: 1.1em;
+  }
+  .numDogs {
+    font-size: 1.5em;
+  }
+  .remove-button {
+    display: none;
   }
 }
 
