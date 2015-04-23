@@ -1,0 +1,25 @@
+<% include ../partials/header.ejs %>
+<div class='row text-center'>
+  <h2 class='text-center main-title-park-list'><%= parkName[0].name %></h2>
+  <h4>Checkins within the last hour</h4>
+  <hr class='list-line'>
+</div>
+<div class='row text-center'>
+  <ul class="list-group checkedIn-list">
+
+  </ul>
+</div>
+
+<script>
+var checkins = <%- JSON.stringify(checkin) %>
+var owners = <%- JSON.stringify(dogs) %>
+
+
+
+dogListPage();
+
+// console.log(validCheckedUsers)
+// console.log(validCheckIns)
+</script>
+
+<% include ../partials/footer.ejs %>

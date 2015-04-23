@@ -245,6 +245,45 @@ function showJs(){
   setPageDogCount(validCheckInFinder(getCheckInTimes(parks,checks)))
 }
 
+function dogListPage() {
+  //checking if checkin occurred within the last 60 mins, if did pushs time diff to min array and creates key-value pair in validchins object//
+  mins = []
+  var currentTimeMin = (new Date().getTime() / 1000 / 3600 * 60);
+  var validCheckIns = {} //object where valid checkin times and userId are stored
+  for(var key in checkins){
+    console.log('!!!!!!!',Date.parse(checkins[key]) / 1000 / 3600 * 60)
+    if(currentTimeMin - (Date.parse(checkins[key])) / 1000 / 3600 * 60 <= 60){
+      if(!validCheckIns[key]){
+        console.log('here')
+        validCheckIns[key] = checkins[key];
+        mins.push(Math.floor(currentTimeMin - (Date.parse(checkins[key])) / 1000 / 3600 * 60))
+      }else{
+        validCheckins[key].push(key);
+      }
+    }
+  }
+  console.log(mins)
+  //finding users from keys in validCheckIns object and storing in validCheckedUsers array, eventually want to be dog name
+  var validCheckedUsers = []
+  for(var user in owners){
+    for(var id in validCheckIns){
+      if (user === id){
+        var xuser = owners
+        console.log(xuser)
+        var checkIn = validCheckIns[id]
+        console.log(checkIn)
+        validCheckedUsers.push(owners[user])
+      }
+    }
+  }
+
+  $(function(){
+    validCheckedUsers.forEach(function(user,idx){
+      $('.checkedIn-list').append("<li class='" + user + " checkedIn-dogs'>" + user + " <small class='mins-fix'>(" + mins[idx] + " mins ago)</small></li>")
+    })
+  })
+}
+
 function editList(array){
   $(function(){
     var tableNames = $('.park-name');

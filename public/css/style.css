@@ -1,6 +1,27 @@
 body {
   max-width: 1200px;
   font-family: 'Old Standard TT', serif;
+  background-color: background: #ddf1f9; /* Old browsers */
+background: -moz-linear-gradient(top,  #ddf1f9 100%, #a0d8ef 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(100%,#ddf1f9), color-stop(100%,#a0d8ef)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #ddf1f9 100%,#a0d8ef 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #ddf1f9 100%,#a0d8ef 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #ddf1f9 100%,#a0d8ef 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #ddf1f9 100%,#a0d8ef 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ddf1f9', endColorstr='#a0d8ef',GradientType=0 ); /* IE6-9 */
+}
+.list-line {
+  color: white;
+}
+.header-navbar {
+  background-color: white;
+  box-shadow: 2px 2px 2px gray
+}
+.dogbone-nav {
+  width: 55px;
+  height: 30px;
+  margin: auto;
+  padding-bottom: 7px;
 }
 .alerts {
   margin: auto;
@@ -21,14 +42,13 @@ body {
 }
 .home-image {
   height: 18em;
-  width: 23em;
+  width: 32em;
   margin:  0 auto ;
+  margin-bottom: 1em;
+  /*display: none;*/
 }
 .main-small {
   font-size: .3em;
-}
-.main-right {
-  margin-top:1.5em;
 }
 h1,
 h2 {
@@ -64,6 +84,10 @@ legend {
   width: 40%;
   margin: 0 auto;
   margin-top: 2%;
+}
+.password-characters {
+  font-size: 75%;
+  color: gray;
 }
 .reg-button,
 .login-button {
@@ -122,6 +146,16 @@ box-shadow: 2px 32px 31px 5px rgba(0,0,0,0.75);
 .no-parks {
   font-size: 3em;
 }
+.numDogs {
+  padding-left: 35px;
+}
+.checkedIn-dogs {
+  display: block;
+  font-size: 2.5em;
+}
+.mins-fix {
+  font-size: .4em;
+}
 #modal-id {
   z-index: 100000;
 }
@@ -141,6 +175,7 @@ box-shadow: 2px 32px 31px 5px rgba(0,0,0,0.75);
   }
   .main-small {
     line-height: -3px;
+    font-size: .25em;
   }
 
   #main-search,
@@ -172,6 +207,24 @@ box-shadow: 2px 32px 31px 5px rgba(0,0,0,0.75);
   .navbar {
     margin-bottom: 0px;
   }
+  .welcome-text {
+    width:100%;
+  }
+  .home-image {
+    display: none;
+  }
+  .remove-button {
+    display: none;
+  }
+  .numDogs {
+    padding-left: 20px;
+  }
+  .welcome-old {
+    font-size: 2.5em;
+  }
+  .welcome-form {
+    margin-top: 25px;
+  }
 
 }
 
@@ -180,27 +233,25 @@ box-shadow: 2px 32px 31px 5px rgba(0,0,0,0.75);
     width: 100%;
   }
   #main-title{
-    margin-top: -20%;
+    margin-top: 0%;
     font-size: 4em;
   }
   .show-title {
     margin-top: auto;
   }
-  .welcome-old {
-    margin-top: auto;
-  }
   #register-legend,
   #login-legend {
-    margin-top: 0px;
+    margin-top: 15px;
   }
   .park-name {
     font-size: 1.1em;
   }
   .numDogs {
     font-size: 1.5em;
+    /*padding-left: 8px;*/
   }
-  .remove-button {
-    display: none;
+  .main-title-park-list {
+    font-size:2.8em;
   }
 }
 

@@ -29,7 +29,7 @@
     <% for(var i = 0; i < parks.length; i++){ %>
     <tr>
       <td><p class='park-name'><%= parks[i].name %></p></td>
-      <td><p class='numDogs'>none</p></td>
+      <td><a href='/favorites/:<%= parks[i].id %>'><p class='numDogs'>none</p></a></td>
       <td>
         <form action='/favorites/checkin' method='post' class='checkin-form'>
         <input type='hidden' name='parkid' value='<%= parks[i].id %>'>

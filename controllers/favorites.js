@@ -84,6 +84,39 @@ router.post('/remove',function(req,res){
   })
 })
 
+router.get('/:id',function(req,res){
+  var user = req.getUser();
+  var id = req.params.id;
+  var parkid = id.slice(1);
+  var checkin = {};
+  // var peopleIds = []
+  var dogs = {};
+  var parkName = [];
+  // console.log('!!!!!!!',typeof parkid, parseInt(parkid));
+  db.park.find({where:{id:parkid}}).then(function(name){
+    parkName.push(name)
+  }).then(function(){
+  db.checkin.findAll({where:{parkId: parkid}}).then(function(park){
+    park.forEach(function(item){
+      checkin[item.userId] = item.createdAt;
+      // peopleIds.push(item.userId);
+    })
+      console.log(checkin)
+  }).then(function(){
+    db.user.findAll().then(function(person){
+      person.forEach(function(item){
+        dogs[item.id] = item.username
+      })
+        console.log(dogs)
+    }).then(function(){
+    res.render('favorites/list',{checkin:checkin,dogs:dogs,user:user,parkName:parkName})
+  }).catch(function(err){
+    console.log(err)
+  })
+})
+})
+})
+
 
 
 
