@@ -23,6 +23,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ddf1f9', end
   margin: auto;
   padding-bottom: 7px;
 }
+.header-heart {
+  color: red;
+  font-size: 30px;
+  text-align: center;
+  padding-top: 2%;
+  margin-left: 25%;
+}
 .alerts {
   margin: auto;
 }
