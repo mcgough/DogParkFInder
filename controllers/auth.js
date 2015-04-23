@@ -61,6 +61,7 @@ router.post('/register',function(req,res){
     if(error){
       if(Array.isArray(error.errors)){
           error.errors.forEach(function(errorItem){
+              console.log(errorItem)
               req.flash('danger',errorItem.message);
           });
       }else{
