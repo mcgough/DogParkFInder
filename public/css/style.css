@@ -87,6 +87,7 @@ legend {
   width: 40%;
   margin: 0 auto;
   margin-top: 2%;
+  text-align: center;
 }
 .password-characters {
   font-size: 75%;
@@ -95,6 +96,7 @@ legend {
 .reg-button,
 .login-button {
   margin: 0 auto;
+  text-align: center;
 }
 .contact-text {
   font-size: 1.5em;
