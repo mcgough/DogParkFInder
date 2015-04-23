@@ -59,6 +59,9 @@ h2 {
 #login-form {
   font-size: 2em;
 }
+input {
+  text-align: center;
+}
 #register-legend,
 #login-legend {
   font-size: 2em;
@@ -175,7 +178,7 @@ box-shadow: 2px 32px 31px 5px rgba(0,0,0,0.75);
   }
   .main-small {
     line-height: -3px;
-    font-size: .25em;
+    font-size: .24em;
   }
 
   #main-search,
@@ -217,7 +220,7 @@ box-shadow: 2px 32px 31px 5px rgba(0,0,0,0.75);
     display: none;
   }
   .numDogs {
-    padding-left: 20px;
+    padding-left: 10px;
   }
   .welcome-old {
     font-size: 2.5em;
@@ -234,7 +237,7 @@ box-shadow: 2px 32px 31px 5px rgba(0,0,0,0.75);
   }
   #main-title{
     margin-top: 0%;
-    font-size: 4em;
+    font-size: 6em;
   }
   .show-title {
     margin-top: auto;
@@ -252,6 +255,9 @@ box-shadow: 2px 32px 31px 5px rgba(0,0,0,0.75);
   }
   .main-title-park-list {
     font-size:2.8em;
+  }
+  .show-page {
+    padding-left: 0;
   }
 }
 
