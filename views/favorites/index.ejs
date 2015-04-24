@@ -20,9 +20,9 @@
   <thead>
     <tr>
       <th class='table-park'>Park Name</th>
-      <th class='table-dogs'>Dogs Playing</th>
-      <th></th>
-      <th></th>
+      <th class='table-dogs'>Dogs</th>
+      <th class='empty'></th>
+      <th class='empty'></th>
     </tr>
   </thead>
   <tbody>
@@ -34,14 +34,14 @@
         <form action='/favorites/checkin' method='post' class='checkin-form'>
         <input type='hidden' name='parkid' value='<%= parks[i].id %>'>
         <input type='hidden' name='userid' value='<%= user.id %>'>
-        <button type='submit' class='btn btn-primary checkin-button'>CheckIn</button>
+        <button type='submit' class='btn btn-success checkin-button'><span class='glyphicon glyphicon-ok'></span></button>
         </form>
       </td>
       <td>
         <form action='/favorites/checkout' method='post' class='checkout-form'>
           <input type='hidden' name='parkid' value='<%= parks[i].id %>'>
           <input type='hidden' name='userid' value='<%= user.id %>'>
-          <button type='submit' class='btn btn-success checkout-button hidden'>CheckOut</button>
+          <button type='submit' class='btn btn-danger checkout-button hidden'><span class='glyphicon glyphicon-ok'></span></button>
         </form>
       </td>
       <td>

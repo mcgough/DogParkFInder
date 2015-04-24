@@ -108,6 +108,7 @@ function userMap(markers){
 
 //index.ejs script
 function indexJs(){
+  //compares users fav's to checkins, if there only checked in park and checkout button are shown
   checkins = {};
   for(var i = 0; i < checks.length; i++){
    if(checks[i].userid === user.id){
@@ -122,6 +123,7 @@ function indexJs(){
             // console.log($(this).parent().parent().children().eq(3));
             $(this).parent().parent().children().eq(2).addClass('hidden');
             $(this).parent().parent().children($('.checkout-button').removeClass('hidden'));
+            $(this).parent().parent().children($('.remove-button').addClass('hidden'))
           }else{
             console.log('no')
           }
@@ -131,6 +133,8 @@ function indexJs(){
     }
    }
   }
+
+  //creates an array of checkins at parks
   for(var i = 0; i < dogRuns.length;i++){
     for(var j = 0; j < checks.length;j++){
       if(dogRuns[i].id === checks[j].parkid){
@@ -142,6 +146,8 @@ function indexJs(){
       }
     }
   }
+
+  //checks how long ago checkins occurred and stores only those less than 1 hour old in an object
   var currentTimeMin = (new Date().getTime() / 1000 / 3600 * 60);
   var validCheckins = {};
   for(var key in checkins){
@@ -155,6 +161,7 @@ function indexJs(){
       }
     })
   }
+  //display validCheckins on DOM and their count
   $(function(){
     var header = $('.welcome');
     var parkName = $('.park-name').text();

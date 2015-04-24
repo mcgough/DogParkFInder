@@ -26,7 +26,9 @@
       <span class="icon-bar"></span>
     </button>
     <a class="navbar-brand" href="/"><img src='/images/dogbone.png' class='dogbone-nav'></a>
+    <% if(user) { %>
     <a href='/favorites/index'><span class='glyphicon glyphicon-heart header-heart hidden'></span></a>
+    <% } %>
   </div>
 
   <!-- Collect the nav links, forms, and other content for toggling -->

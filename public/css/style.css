@@ -24,10 +24,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ddf1f9', end
   padding-bottom: 7px;
 }
 .header-heart {
-  color: red;
+  color: black;
   font-size: 30px;
   text-align: center;
-  padding-top: 2%;
+  padding-top: 3%;
   margin-left: 25%;
 }
 .alerts {
@@ -158,9 +158,9 @@ box-shadow: 2px 32px 31px 5px rgba(0,0,0,0.75);
 .no-parks {
   font-size: 3em;
 }
-.numDogs {
+/*.numDogs {
   padding-left: 35px;
-}
+}*/
 .checkedIn-dogs {
   display: block;
   font-size: 2.5em;
@@ -170,6 +170,9 @@ box-shadow: 2px 32px 31px 5px rgba(0,0,0,0.75);
 }
 #modal-id {
   z-index: 100000;
+}
+.checkin-form {
+  margin-right: -30px;
 }
 
 
@@ -204,10 +207,10 @@ box-shadow: 2px 32px 31px 5px rgba(0,0,0,0.75);
   .navbar-nav li a {
     font-size: 2em;
   }
-  .table-park,
+/*  .table-park,
   .table-dogs {
     font-size: 1.5em;
-  }
+  }*/
   .numDogs,
   .park-name {
     font-size: 1.75em;
@@ -225,9 +228,9 @@ box-shadow: 2px 32px 31px 5px rgba(0,0,0,0.75);
   .home-image {
     display: none;
   }
-  .remove-button {
+/*  .remove-button {
     display: none;
-  }
+  }*/
   .numDogs {
     padding-left: 10px;
   }
@@ -237,7 +240,12 @@ box-shadow: 2px 32px 31px 5px rgba(0,0,0,0.75);
   .welcome-form {
     margin-top: 25px;
   }
-
+  .remove-button {
+    margin-left: -25px
+  }
+  .checkin-form {
+    margin-right: 0;
+  }
 }
 
 @media (max-width: 350px) {
@@ -260,13 +268,16 @@ box-shadow: 2px 32px 31px 5px rgba(0,0,0,0.75);
   }
   .numDogs {
     font-size: 1.5em;
-    /*padding-left: 8px;*/
+    padding-left: 2%;
   }
   .main-title-park-list {
     font-size:2.8em;
   }
   .show-page {
     padding-left: 0;
+  }
+  .header-heart {
+    margin-left: 16%;
   }
 }
 
