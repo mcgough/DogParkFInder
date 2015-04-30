@@ -36,10 +36,10 @@
           <% } %>
           <td><form action='/favorites/add' method='post' class='hidden-form add-form'><input type='hidden' name='name' value='<%= venues.venues[i].name %>'><input type='hidden' name='address' value='<%= venues.venues[i].location.formattedAddress %>'><input type='hidden' name='lat' value='<%= venues.venues[i].location.lat %>'><input type='hidden' name='long' value='<%= venues.venues[i].location.lng %>'>
           <% if(user){ %>
-          <button type='submit' class='btn btn-primary favorite'>Favorite</button></form>
+          <button type='submit' class='btn btn-primary favorite'><i class='glyphicon glyphicon-ok'></i></button></form>
 
             <% } %>
-          <button type='submit' class='btn btn-primary hidden'>Favorite</button></form>
+          <button type='submit' class='btn btn-primary hidden'><i class='glyphicon gliyphicon-ok'></</button></form>
         </tr>
       <% } %>
       <% } %>

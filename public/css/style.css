@@ -279,6 +279,9 @@ box-shadow: 2px 32px 31px 5px rgba(0,0,0,0.75);
   .header-heart {
     margin-left: 16%;
   }
+  a {
+    font-size: 8px;
+  }
 }
 
 
