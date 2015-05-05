@@ -205,11 +205,14 @@ a {
 .about {
   margin-top: 3em;
 }
-i {
+.icon {
   margin-left: 10px;
 }
-i:first-child {
+.icon:first-child {
   margin-left: 0px;
+}
+.link-icon:hover {
+  text-decoration: none;
 }
 
 
