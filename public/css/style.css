@@ -1,8 +1,15 @@
+html {
+  height: 100%;
+  width: 100%;
+}
 body {
   max-width: 1200px;
   font-family: 'Old Standard TT', serif;
   background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),url(../images/Olive.jpg);
   background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   background-position: center;
   color: white;
   text-shadow: 2px 2px 2px black;
@@ -197,6 +204,12 @@ a {
 .contact,
 .about {
   margin-top: 3em;
+}
+i {
+  margin-left: 10px;
+}
+i:first-child {
+  margin-left: 0px;
 }
 
 
