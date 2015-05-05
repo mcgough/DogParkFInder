@@ -16,7 +16,7 @@
 <div class='row'>
 <div class='col-md-7'>
 <div class='table-scroll' style='overflow-y: scroll; height: 500px;'>
-<table class="table table-hover">
+<table class="table">
   <thead>
     <tr>
       <th class='table-park'>Park Name</th>
@@ -29,7 +29,7 @@
     <% for(var i = 0; i < parks.length; i++){ %>
     <tr>
       <td><p class='park-name'><%= parks[i].name %></p></td>
-      <td><a href='/favorites/:<%= parks[i].id %>'><p class='numDogs'>none</p></a></td>
+      <td><a href='/favorites/:<%= parks[i].id %>' class='btn btn-primary'>none</a></td>
       <td>
         <form action='/favorites/checkin' method='post' class='checkin-form'>
         <input type='hidden' name='parkid' value='<%= parks[i].id %>'>

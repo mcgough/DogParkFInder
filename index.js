@@ -36,6 +36,16 @@ app.get('/',function(req,res){
   res.render('index',{user:user})
 })
 
+app.get('/contact',function(req,res){
+  var user = req.getUser();
+  res.render('siteinfo/contact',{user:user})
+})
+
+app.get('/about',function(req,res){
+  var user = req.getUser();
+  res.render('siteinfo/about',{user:user})
+})
+
 app.get('*', function(req, res){
   var user = req.getUser();
   res.render('error/error',{user:user});

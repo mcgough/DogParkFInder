@@ -12,11 +12,11 @@
 <div class='row results'>
   <div class='col-md-7'>
 <div class='table-scroll' style='overflow-y: scroll; height: 450px;'>
-    <table class="table table-hover">
+    <table class="table">
       <thead>
         <tr>
           <th>Park Name</th>
-          <th>Address</th>
+          <th class='address'>Address</th>
           <% if(user) { %>
 
           <th>Dogs Playing</th>
@@ -30,7 +30,7 @@
         <% if(venues.venues[i].name !== 'Dog Park' && venues.venues[i].categories[0].name === 'Dog Run' || venues.venues[i].categories[0].name === "Dog Park"){ %>
         <tr>
           <td class='park hidden-val'><p class='park-name'><%= venues.venues[i].name %></p><input type='hidden' class='latlong' value='<%= venues.venues[i].location.lat %>,<%= venues.venues[i].location.lng %>'></td>
-          <td><a href='https://www.google.com/maps/place/<%= venues.venues[i].location.formattedAddress %>'><%= venues.venues[i].location.formattedAddress %></a></td>
+          <td class='address'><a href='https://www.google.com/maps/place/<%= venues.venues[i].location.formattedAddress %>'><%= venues.venues[i].location.formattedAddress %></a></td>
           <% if(user) { %>
           <td><p class='numDogs show-page'>none</p></td>
           <% } %>
@@ -39,7 +39,7 @@
           <button type='submit' class='btn btn-primary favorite'><i class='glyphicon glyphicon-ok'></i></button></form>
 
             <% } %>
-          <button type='submit' class='btn btn-primary hidden'><i class='glyphicon gliyphicon-ok'></</button></form>
+      <!--     <button type='submit' class='btn btn-primary hidden'><i class='glyphicon gliyphicon-ok'></</button></form> -->
         </tr>
       <% } %>
       <% } %>

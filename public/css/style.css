@@ -1,21 +1,20 @@
 body {
   max-width: 1200px;
   font-family: 'Old Standard TT', serif;
-  background-color: background: #ddf1f9; /* Old browsers */
-background: -moz-linear-gradient(top,  #ddf1f9 100%, #a0d8ef 100%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(100%,#ddf1f9), color-stop(100%,#a0d8ef)); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(top,  #ddf1f9 100%,#a0d8ef 100%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(top,  #ddf1f9 100%,#a0d8ef 100%); /* Opera 11.10+ */
-background: -ms-linear-gradient(top,  #ddf1f9 100%,#a0d8ef 100%); /* IE10+ */
-background: linear-gradient(to bottom,  #ddf1f9 100%,#a0d8ef 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ddf1f9', endColorstr='#a0d8ef',GradientType=0 ); /* IE6-9 */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),url(../images/Olive.jpg);
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-shadow: 2px 2px 2px black;
 }
 .list-line {
   color: white;
 }
 .header-navbar {
   background-color: white;
-  box-shadow: 2px 2px 2px gray
+  box-shadow: 2px 2px 2px gray;
+  opacity: .9;
+  text-shadow: none;
 }
 .dogbone-nav {
   width: 55px;
@@ -46,6 +45,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ddf1f9', end
 #main-title {
   margin-top: 1%;
   font-size: 6.5em;
+  color: white;
+  text-shadow: 2px 2px 2px black;
 }
 .home-image {
   height: 18em;
@@ -56,6 +57,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ddf1f9', end
 }
 .main-small {
   font-size: .3em;
+  color: white;
+  text-shadow: 2px 2px 2px black;
 }
 h1,
 h2 {
@@ -80,6 +83,7 @@ input {
 }
 legend {
   margin-bottom: 0px;
+  color: white;
 }
 #main-search {
   width: 60%;
@@ -98,7 +102,7 @@ legend {
 }
 .password-characters {
   font-size: 75%;
-  color: gray;
+  color: white;
 }
 .reg-button,
 .login-button {
@@ -121,7 +125,9 @@ li {
   width: 35px;
   height: 35px;
 }
-
+.gm-style-mtc {
+  text-shadow: none;
+}
 #map-canvas {
 width: 410px;
 height: 450px;
@@ -135,6 +141,7 @@ height: 450px;
   width: 50%;
   margin-bottom: -1em;
   text-align: center;
+  text-shadow: none;
 }
 label {
   margin-top: 10px;
@@ -154,6 +161,7 @@ label {
 -webkit-box-shadow: 2px 32px 31px 5px rgba(0,0,0,0.75);
 -moz-box-shadow: 2px 32px 31px 5px rgba(0,0,0,0.75);
 box-shadow: 2px 32px 31px 5px rgba(0,0,0,0.75);
+text-shadow: none;
 }
 .no-parks {
   font-size: 3em;
@@ -173,6 +181,22 @@ box-shadow: 2px 32px 31px 5px rgba(0,0,0,0.75);
 }
 .checkin-form {
   margin-right: -30px;
+}
+th {
+  font-size: 20px;
+}
+td {
+  font-size: 20px;
+}
+.btn {
+  text-shadow: none;
+}
+a {
+  color: white;
+}
+.contact,
+.about {
+  margin-top: 3em;
 }
 
 
@@ -198,22 +222,15 @@ box-shadow: 2px 32px 31px 5px rgba(0,0,0,0.75);
   #reg-form {
     width: 75%;
   }
- /* #main-title {
-    margin-top: -25%;
-  }*/
   .small-remove {
     display: none;
   }
   .navbar-nav li a {
     font-size: 2em;
   }
-/*  .table-park,
-  .table-dogs {
-    font-size: 1.5em;
-  }*/
   .numDogs,
   .park-name {
-    font-size: 1.75em;
+    font-size: 16px;
   }
   .alerts {
     font-size: 10px;
@@ -228,9 +245,6 @@ box-shadow: 2px 32px 31px 5px rgba(0,0,0,0.75);
   .home-image {
     display: none;
   }
-/*  .remove-button {
-    display: none;
-  }*/
   .numDogs {
     padding-left: 10px;
   }
@@ -246,6 +260,13 @@ box-shadow: 2px 32px 31px 5px rgba(0,0,0,0.75);
   .checkin-form {
     margin-right: 0;
   }
+  .address {
+    display: none;
+  }
+  .contact,
+  .about {
+    margin-top: 1em;
+  }
 }
 
 @media (max-width: 350px) {
@@ -257,17 +278,17 @@ box-shadow: 2px 32px 31px 5px rgba(0,0,0,0.75);
     font-size: 6em;
   }
   .show-title {
-    margin-top: auto;
+    margin-top: 10px;
   }
   #register-legend,
   #login-legend {
     margin-top: 15px;
   }
   .park-name {
-    font-size: 1.1em;
+    font-size: 16px;
   }
   .numDogs {
-    font-size: 1.5em;
+    font-size: 20px;
     padding-left: 2%;
   }
   .main-title-park-list {
@@ -280,7 +301,8 @@ box-shadow: 2px 32px 31px 5px rgba(0,0,0,0.75);
     margin-left: 16%;
   }
   a {
-    font-size: 8px;
+    font-size: 12px;
+    color: white;
   }
 }
 

@@ -13,6 +13,7 @@ router.get('/:id',function(req,res){
   var user = req.getUser();
   var near = req.query.q;
   var url = 'https://api.foursquare.com/v2/venues/search?client_id=' + fourSq + '&client_secret=' + fourSqSec + '&v=20130815&near=' + near + '&radius=6000&query=dog park';
+  // res.send('working')
   request(url,function(error,response,data) {
     if(!error && response.statusCode === 200){
       var locations = JSON.parse(data);
@@ -34,7 +35,11 @@ router.get('/:id',function(req,res){
         })
       })
     }else{
+      if(error){
+        console.log('error',error)
+      }else{
       res.redirect('/');
+      }
     }
   })
 })
