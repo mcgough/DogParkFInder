@@ -228,9 +228,12 @@ a {
   body {
     font-size: 1em;
   }
+  #main-title {
+    font-size: 3em;
+  }
   .main-small {
     line-height: -3px;
-    font-size: .24em;
+    font-size: .5em;
   }
 
   #main-search,
@@ -291,7 +294,10 @@ a {
   }
   #main-title{
     margin-top: 0%;
-    font-size: 6em;
+    font-size: 3em;
+  }
+  .main-small {
+    font-size: .4em;
   }
   .show-title {
     margin-top: 10px;
