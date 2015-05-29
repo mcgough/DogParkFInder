@@ -5,7 +5,7 @@ html {
 body {
   max-width: 1200px;
   font-family: 'Old Standard TT', serif;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),url(../images/Olivelarge.jpg);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(100, 100, 100, 0.4)),url(../images/Olivelarge.jpg);
   background-size: cover;
   -webkit-background-size: cover;
   -moz-background-size: cover;
