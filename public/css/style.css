@@ -214,6 +214,9 @@ a {
 .link-icon:hover {
   text-decoration: none;
 }
+.address a:hover {
+  color: #fff;
+}
 
 
 /*media queries*/
