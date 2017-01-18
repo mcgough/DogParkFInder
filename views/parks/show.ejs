@@ -28,8 +28,8 @@
       <tbody>
        <% for(var i = 0; i < venues.venues.length; i++){ %>
         <tr>
-          <td class='park hidden-val'><a href='https://www.google.com/maps/place/<%= venues.venues[i].location.formattedAddress %>'><p class='park-name'><%= venues.venues[i].name %></p></a><input type='hidden' class='latlong' value='<%= venues.venues[i].location.lat %>,<%= venues.venues[i].location.lng %>'></td>
-          <td class='address'><%= venues.venues[i].location.formattedAddress %></td>
+          <td class='park hidden-val'><p class='park-name'><%= venues.venues[i].name %></p><input type='hidden' class='latlong' value='<%= venues.venues[i].location.lat %>,<%= venues.venues[i].location.lng %>'></td>
+          <td class='address'><a href='https://www.google.com/maps/place/<%= venues.venues[i].location.formattedAddress %>'><%= venues.venues[i].location.formattedAddress %></a></td>
           <% if(user) { %>
           <td><p class='numDogs show-page'>none</p></td>
           <% } %>
