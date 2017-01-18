@@ -27,7 +27,6 @@
       </thead>
       <tbody>
        <% for(var i = 0; i < venues.venues.length; i++){ %>
-        <% if(venues.venues[i].name !== 'Dog Park' && venues.venues[i].categories[0].name === 'Dog Run' || venues.venues[i].categories[0].name === "Dog Park"){ %>
         <tr>
           <td class='park hidden-val'><a href='https://www.google.com/maps/place/<%= venues.venues[i].location.formattedAddress %>'><p class='park-name'><%= venues.venues[i].name %></p></a><input type='hidden' class='latlong' value='<%= venues.venues[i].location.lat %>,<%= venues.venues[i].location.lng %>'></td>
           <td class='address'><%= venues.venues[i].location.formattedAddress %></td>
@@ -38,10 +37,9 @@
           <% if(user){ %>
           <button type='submit' class='btn btn-success favorite'><i class='glyphicon glyphicon-ok'></i></button></form>
 
-            <% } %>
+        <% } %>
       <!--     <button type='submit' class='btn btn-primary hidden'><i class='glyphicon gliyphicon-ok'></</button></form> -->
         </tr>
-      <% } %>
       <% } %>
       </tbody>
     </table>
