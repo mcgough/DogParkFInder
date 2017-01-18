@@ -72,9 +72,13 @@ function parksMap(){
           position: new google.maps.LatLng(parkLat,parkLong),
         });
         var infowindow = new google.maps.InfoWindow({
-          content: $(this).siblings().text()
+          content: "<p style='color:black'>" + $(this).siblings().text() + "</p>"
         });
         google.maps.event.addListener(marker, 'click', function() {
+          if (openWindow) {
+            openWindow.close();
+          }
+          openWindow = infowindow;
           infowindow.open(map,marker);
         })
         marker.setMap(map);
@@ -83,6 +87,8 @@ function parksMap(){
     google.maps.event.addDomListener(window, 'load', initialize);
   })
 }
+
+var openwindow = false;
 
 //Map on favorites/index.ejs
 function userMap(markers){
