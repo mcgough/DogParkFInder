@@ -88,7 +88,7 @@ function parksMap(){
   })
 }
 
-var openwindow = false;
+var openWindow = false;
 
 //Map on favorites/index.ejs
 function userMap(markers){
