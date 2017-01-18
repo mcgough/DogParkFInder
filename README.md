@@ -1,7 +1,7 @@
 http://dogparkfinder.herokuapp.com/
 
 # Project-1
-WDI Seattle first project
+Timeline: 1 week
 #Requirements
 -build an express app in a week that calls at least one api and use postgres with sequelize to build the database
 #Api's used
