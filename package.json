@@ -21,6 +21,7 @@
     "bcrypt": "^0.8.2",
     "body-parser": "^1.12.2",
     "connect-flash": "^0.1.1",
+    "dotenv": "^4.0.0",
     "ejs": "^2.3.1",
     "express": "^4.12.3",
     "express-session": "^1.11.1",

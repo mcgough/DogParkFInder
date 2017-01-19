@@ -5,6 +5,8 @@ var request = require('request');
 var session = require('express-session');
 var flash = require('connect-flash');
 
+require('dotenv').config();
+
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(session({
