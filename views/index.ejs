@@ -1,28 +1,20 @@
 <% include partials/header.ejs %>
+
 <div class='row alerts'>
   <% include ./partials/alerts.ejs %>
-
 </div>
-<div class='row text-center main-index'>
-  <div class='col-md-6'>
-    <h1 id='main-title' class='text-center'>DogParkFinder<br><small class='main-small'>...a dog park finder and checkin app. <span class='small-remove'>Locate new parks in your area or checkin and let others know where you're at!</span></small></h1>
+
+<div class='main-index'>
+  <div class=''>
+    <h1 id='main-title' class='text-center'>DogParkFinder</h1>
   </div>
-  <div class='col-md-6 main-right'>
-    <img src='/images/dogbone.png' class='text-center home-image'>
-
-    <form action="/parks/:id" method="get" role="form" id='main-search'>
-
-        <div class="form-group welcome-form">
-       <!--    <label for="">label</label> -->
-          <input type="text" class="form-control main-search" name='q' id="main-input" placeholder="Search for new parks">
-
+  <img src='/images/dog-park-15-152-260714.png' class='text-center home-image'>
+  <form action="/parks/:id" method="get" role="form" id='main-search'>
+    <div class="form-group welcome-form">
+      <input type="text" class="form-control main-search" name='q' id="main-input" placeholder="Search for a park in your neighborhood">
       <button type="submit" class="btn btn-default main-search-button">Submit</button>
-    </form>
-  </div>
+    </div>
+  </form>
 </div>
-
-
-
 
 <% include partials/footer.ejs %>
-<!-- <a href='/parks/index' class='btn btn-primary'>Go to parks</a> -->

@@ -1,53 +1,56 @@
 <% include ../partials/header.ejs %>
-
-
-<div class='row'>
-  <div class='col-md-6'>
-    <h2 class='text-center show-title'>Dog Parks</h2>
-  </div>
+<div class="banner">
+  <div class="banner-image"></div>
 </div>
-<div class='row error hidden text-center'>
-  <h2 class='no-parks'>Sorry no parks were found in that city</h2>
-</div>
-<div class='row results'>
-  <div class='col-md-7'>
-<div class='table-scroll' style='overflow-y: scroll; height: 450px;'>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Park Name</th>
-          <th class='address'>Address</th>
-          <% if(user) { %>
-
-          <th>Dogs Playing</th>
-          <th></th>
-          <% } %>
-
-        </tr>
-      </thead>
-      <tbody>
-       <% for(var i = 0; i < venues.venues.length; i++){ %>
-        <tr>
-          <td class='park hidden-val'><p class='park-name'><%= venues.venues[i].name %></p><input type='hidden' class='latlong' value='<%= venues.venues[i].location.lat %>,<%= venues.venues[i].location.lng %>'></td>
-          <td class='address'><a href='https://www.google.com/maps/place/<%= venues.venues[i].location.formattedAddress %>'><%= venues.venues[i].location.formattedAddress %></a></td>
-          <% if(user) { %>
-          <td><p class='numDogs show-page'>none</p></td>
-          <% } %>
-          <td><form action='/favorites/add' method='post' class='hidden-form add-form'><input type='hidden' name='name' value='<%= venues.venues[i].name %>'><input type='hidden' name='address' value='<%= venues.venues[i].location.formattedAddress %>'><input type='hidden' name='lat' value='<%= venues.venues[i].location.lat %>'><input type='hidden' name='long' value='<%= venues.venues[i].location.lng %>'>
-          <% if(user){ %>
-          <button type='submit' class='btn btn-success favorite'><i class='glyphicon glyphicon-ok'></i></button></form>
-
-        <% } %>
-      <!--     <button type='submit' class='btn btn-primary hidden'><i class='glyphicon gliyphicon-ok'></</button></form> -->
-        </tr>
-      <% } %>
-      </tbody>
-    </table>
-    </div>
-  </div>
-
-  <div class='col-md-5 map-div'>
+<div class="show-page">
+  <div class='map-div'>
     <div id="map-canvas"></div>
+  </div>
+  <div class="results-container">
+    <div class='row'>
+      <div class=''>
+        <h2 class='text-center show-title'>Dog Parks</h2>
+      </div>
+    </div>
+    <div class='row error hidden text-center'>
+      <h2 class='no-parks'>Sorry no parks were found in that city</h2>
+    </div>
+    <div class='row results'>
+      <div class=''>
+    <div class='' style=''>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Park Name</th>
+              <th class='address'>Address</th>
+              <% if(user) { %>
+
+              <th>Dogs Playing</th>
+              <th></th>
+              <% } %>
+
+            </tr>
+          </thead>
+          <tbody>
+           <% for(var i = 0; i < venues.venues.length; i++){ %>
+            <tr>
+              <td class='park hidden-val'><p class='park-name'><%= venues.venues[i].name %></p><input type='hidden' class='latlong' value='<%= venues.venues[i].location.lat %>,<%= venues.venues[i].location.lng %>'></td>
+              <td class='address'><a href='https://www.google.com/maps/place/<%= venues.venues[i].location.formattedAddress %>'><%= venues.venues[i].location.formattedAddress %></a></td>
+              <% if(user) { %>
+              <td><p class='numDogs show-page'>none</p></td>
+              <% } %>
+              <td><form action='/favorites/add' method='post' class='hidden-form add-form'><input type='hidden' name='name' value='<%= venues.venues[i].name %>'><input type='hidden' name='address' value='<%= venues.venues[i].location.formattedAddress %>'><input type='hidden' name='lat' value='<%= venues.venues[i].location.lat %>'><input type='hidden' name='long' value='<%= venues.venues[i].location.lng %>'>
+              <% if(user){ %>
+              <button type='submit' class='btn btn-success favorite'><i class='glyphicon glyphicon-ok'></i></button></form>
+
+            <% } %>
+            </tr>
+          <% } %>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
