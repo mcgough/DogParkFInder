@@ -1,12 +1,51 @@
 @import './mixins.less';
 @import './old-css.less';
 
+//Banner
+@media screen and (max-width: 668px) {
+	ul.nav {
+		.transform(skew(0deg));
+	}
+}
+
 //homepage
 .welcome-form input {
 	padding: 30px;
 }
 .main-index .btn {
 	padding: 20px;
+}
+
+@media screen and (max-width: 668px) {
+	#main-title {
+		font-size: 5em;
+	}
+	.main-index {
+		.btn {
+			padding: 10px 20px;
+		}
+	}
+	.dog {
+		display: none;
+	}
+	#main-search {
+		width: 85%;
+		.welcome-form {
+			width: 100%;
+		}
+	}
+	.welcome-form {
+		.flex-wrap(wrap);
+		input {
+			margin-bottom: 4.5%;
+		}
+	}
+	.geo-popup {
+		.btn {
+			width: 20%;
+			
+		}
+	}
 }
 
 .geo-popup {

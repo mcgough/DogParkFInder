@@ -1,13 +1,16 @@
 $(function() {
 	if(!window.localStorage.coords) {
 	  if ("geolocation" in navigator) {
-			$('.geo-popup').addClass('visible');
+	  	if (!geoCheck) {
+				$('.geo-popup').addClass('visible');
+	  	}
 	  	var coords = {};
 	    navigator.geolocation.getCurrentPosition(function(pos) {
 	    	$('.geo-popup').removeClass('visible');
 	      coords.lat = pos.coords.latitude;
 	      coords.lng = pos.coords.longitude;
 	      window.localStorage.setItem('coords',JSON.stringify(coords));
+	      window.localStorage.setItem('geoCheck',true);
 	      $('.geo-input').val(JSON.stringify(coords));
 	      $('.geo-form').removeClass('hidden');
 	    });
