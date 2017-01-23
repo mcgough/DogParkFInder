@@ -1,0 +1,6 @@
+Todo List:
+
+-fallback for google coordinates call
+-complete content on map infowindows
+-add info window popup on rollover
+-add map center on location click

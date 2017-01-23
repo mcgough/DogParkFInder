@@ -1,71 +1,56 @@
 <% include ../partials/header.ejs %>
-<div class="banner">
-  <div class="banner-image"></div>
-</div>
 <div class="show-page">
   <div class='map-div'>
     <div id="map-canvas"></div>
   </div>
+  <div class='row error hidden text-center'>
+    <h2 class='no-parks'>Sorry no parks were found in that city</h2>
+  </div>
   <div class="results-container">
-    <div class='row'>
-      <div class=''>
-        <h2 class='text-center show-title'>Dog Parks</h2>
-      </div>
-    </div>
-    <div class='row error hidden text-center'>
-      <h2 class='no-parks'>Sorry no parks were found in that city</h2>
-    </div>
-    <div class='row results'>
-      <div class=''>
-    <div class='' style=''>
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Park Name</th>
-              <th class='address'>Address</th>
-              <% if(user) { %>
-
-              <th>Dogs Playing</th>
-              <th></th>
-              <% } %>
-
-            </tr>
-          </thead>
-          <tbody>
-           <% for(var i = 0; i < venues.venues.length; i++){ %>
-            <tr>
-              <td class='park hidden-val'><p class='park-name'><%= venues.venues[i].name %></p><input type='hidden' class='latlong' value='<%= venues.venues[i].location.lat %>,<%= venues.venues[i].location.lng %>'></td>
-              <td class='address'><a href='https://www.google.com/maps/place/<%= venues.venues[i].location.formattedAddress %>'><%= venues.venues[i].location.formattedAddress %></a></td>
-              <% if(user) { %>
-              <td><p class='numDogs show-page'>none</p></td>
-              <% } %>
-              <td><form action='/favorites/add' method='post' class='hidden-form add-form'><input type='hidden' name='name' value='<%= venues.venues[i].name %>'><input type='hidden' name='address' value='<%= venues.venues[i].location.formattedAddress %>'><input type='hidden' name='lat' value='<%= venues.venues[i].location.lat %>'><input type='hidden' name='long' value='<%= venues.venues[i].location.lng %>'>
-              <% if(user){ %>
-              <button type='submit' class='btn btn-success favorite'><i class='glyphicon glyphicon-ok'></i></button></form>
-
+     <% for(var i = 0; i < venues.length; i++){ %>
+      <div class="location">
+        <div class='park hidden-val'>
+          <p class='park-name'><%= venues[i].name %></p>
+          <input type='hidden' class='latlong' value='<%= venues[i].location.lat %>,<%= venues[i].location.lng %>'>
+          <div class='address'>
+            <a href='https://www.google.com/maps/place/<%= venues[i].location.formattedAddress %>'>
+            Directions
+              
+            </a>
+          </div>
+        </div>
+        <div class="details">
+        <% if(venues[i].location.distance) { %>
+        <div class="distance">
+          <span><%= venues[i].location.distance %> miles</span>
+        </div>
+        <% } %>
+        <% if(user) { %>
+        <div>
+          <p class='numDogs'>Dogs Playing Now: <span class="number">0</span></p>
+        </div>
+        <% } %>
+        <div>
+          <form action='/favorites/add' method='post' class='hidden-form add-form'>
+            <input type='hidden' name='name' value='<%= venues[i].name %>'>
+            <input type='hidden' name='address' value='<%= venues[i].location.formattedAddress %>'>
+            <input type='hidden' name='lat' value='<%= venues[i].location.lat %>'>
+            <input type='hidden' name='long' value='<%= venues[i].location.lng %>'>
+            <% if(user){ %>
+              <button type='submit' class='btn favorite'>Favorite</button>
             <% } %>
-            </tr>
-          <% } %>
-          </tbody>
-        </table>
+          </form>
         </div>
       </div>
-    </div>
+      </div>
+    <% } %>
   </div>
-</div>
 
 
 <script type="text/javascript">
-var venues = <%-JSON.stringify(venues.venues) %>
+var venues = <%-JSON.stringify(venues) %>
 var parks = <%-JSON.stringify(parks) %>
 var checks = <%-JSON.stringify(times) %>
-
-// console.log('validCheckins',validCheckins);
-// var list =  parks.map(function(name){
-//   return name.name;
-// })
-
-// editList(list);
 showJs();
 parksMap();
 </script>

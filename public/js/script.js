@@ -1,4 +1,5 @@
 $(function(){
+
   $('#main-input').focus();
   $('#login-email').focus();
   $('#reg-email').focus();
@@ -58,7 +59,7 @@ function parksMap(){
       var mapOptions = {
         scrollwheel: false,
         center: new google.maps.LatLng(newCityLat,newCityLong),
-        zoom: 12,
+        zoom: 13,
         styles: mapDiscreet
         // mapTypeId: google.maps.MapTypeId.ROADMAP
         // disableDefaultUI: true
@@ -71,9 +72,22 @@ function parksMap(){
         var marker = new google.maps.Marker({
           position: new google.maps.LatLng(parkLat,parkLong),
         });
-        var infowindow = new google.maps.InfoWindow({
-          content: "<p style='color:black'>" + $(this).siblings().text() + "</p>"
+        var parkName = $(this).siblings().eq(0).text(),
+            directions = $(this).siblings().eq(1).html(),
+            distance = $(this).parent().siblings().eq(0).children().eq(0).text().trim(),
+            infowindow = new google.maps.InfoWindow({
+              content: "<div class='info-window'><p class='name'>" + parkName + "</p><p class='distance'>" + distance + "</p><p class='directions'>" + directions + "</p></div>"
+            });
+        var location = $(this).parent().parent();
+
+        location.hover(function() {
+          google.maps.event.trigger(marker, 'click');
         });
+            
+        location.click(function() {
+          map.setCenter(marker.getPosition());
+        });
+        
         google.maps.event.addListener(marker, 'click', function() {
           if (openWindow) {
             openWindow.close();
@@ -81,7 +95,9 @@ function parksMap(){
           openWindow = infowindow;
           infowindow.open(map,marker);
         })
+
         marker.setMap(map);
+
       })
     }
     google.maps.event.addDomListener(window, 'load', initialize);
@@ -108,8 +124,8 @@ function userMap(markers){
       });
     marker.setMap(map);
     })
+    google.maps.event.addDomListener(window, 'load', initialize);
   }
-  google.maps.event.addDomListener(window, 'load', initialize);
 }
 
 //index.ejs script
@@ -253,7 +269,7 @@ function showJs(){
           $('.park-name').each(function(){
             if($(this).text() === key){
               console.log(key,'===',$(this).text(),'match!!!!!!!',currentValidCheckins[key].length);
-              $('.numDogs').eq(count).text(currentValidCheckins[key].length);
+              $('.numDogs .number').eq(count).text(currentValidCheckins[key].length);
             }
             count++;
           })

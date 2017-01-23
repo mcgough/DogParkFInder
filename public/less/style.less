@@ -1,0 +1,73 @@
+@import './mixins.less';
+@import './old-css.less';
+
+//homepage
+.welcome-form input {
+	padding: 30px;
+}
+.main-index .btn {
+	padding: 20px;
+}
+
+.geo-popup {
+	.copy {
+		.flex-display();
+		.flex-direction(column);
+		h3 {
+			margin-bottom: 20px;
+		}
+		.btn {
+			margin: auto;
+			background: #fff;
+    	border: 1px solid #ccc;
+    	.transition(all .3s ease-in-out);
+		}
+		.btn:hover {
+			background: #ccc;
+		}
+	}
+}
+.my-close {
+	cursor: pointer;
+}
+
+
+//Results Page
+
+.location {
+	width: 48%;
+	.transform(skew(-15deg));
+	.flex-display();
+	.justify-content(space-between);
+	cursor: pointer;
+	padding: 10px 15px;
+	.park {
+		margin-bottom: 0;
+	}
+	a {
+		.transition(all .25s ease-in-out);
+	}
+	.btn {
+		margin-top: 2.5%;
+		.transform(skew(-5deg));
+	}
+	&:hover {
+		.transform(skew(0deg));
+		opacity: 1;
+		a {
+			color: #000;
+		}
+		.btn {
+			.transform(skew(0deg));
+		}
+	}
+}
+.info-window {
+	text-align: center;
+	p {
+		margin: 0 0 1.5% 0;
+	}
+	.directions a {
+		color: #000;
+	}
+}
