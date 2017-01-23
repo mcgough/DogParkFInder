@@ -149,6 +149,11 @@ ul.nav {
   opacity: .9;
   text-shadow: none;
 }
+@media screen and (max-width: 668px) {
+  .header-navbar {
+    opacity: .97;
+  }
+}
 .navbar-brand {
   padding-top: 7.5px;
   padding-right: 20px;
@@ -784,6 +789,11 @@ ul.nav {
   opacity: .9;
   text-shadow: none;
 }
+@media screen and (max-width: 668px) {
+  .header-navbar {
+    opacity: .97;
+  }
+}
 .navbar-brand {
   padding-top: 7.5px;
   padding-right: 20px;
@@ -1283,6 +1293,12 @@ a {
   padding: 20px;
 }
 @media screen and (max-width: 668px) {
+  .nav li a {
+    -webkit-transform: skew(-15deg);
+    -moz-transform: skew(-15deg);
+    -ms-transform: skew(-15deg);
+    -o-transform: skew(-15deg);
+  }
   #main-title {
     font-size: 5em;
   }
@@ -1310,6 +1326,16 @@ a {
   .geo-popup .btn {
     width: 20%;
   }
+}
+legend {
+  color: #000;
+  -webkit-transform: skew(-15deg);
+  -moz-transform: skew(-15deg);
+  -ms-transform: skew(-15deg);
+  -o-transform: skew(-15deg);
+}
+#reg-form .password-characters {
+  color: #000;
 }
 .geo-popup .copy {
   display: -webkit-flex;
