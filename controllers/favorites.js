@@ -11,20 +11,29 @@ router.get('/index',function(req,res){
     db.checkin.findAll().then(function(list){
       list.forEach(function(time){
         times.push({time:Date.parse(time.createdAt),parkid:time.parkId,userid:time.userId});
-      // }).then(function(){
-      //   db.checkin.findAll()
       })
     }).then(function(){
-      db.parksusers.findAll({where: {userId: req.session.user.id}}).then(function(joins){
-      console.log("data is", joins);
+      db.parksusers.findAll({where: {userId: req.session.user.id}}).then(function(data){
       var parkids = [];
-      for(var i = 0; i < joins.length;i++){
-        parkids.push(joins[i].parkId);
+      for(var i = 0; i < data.length;i++){
+        parkids.push(data[i].parkId);
       }
       var dogParks = []
       async.each(parkids,function(parkid,callback){
         db.park.find({where:{id:parkid}}).then(function(park){
-          dogParks.push(park)
+          var dogPark = {
+            name: park.name,
+            id: park.id,
+            location: {
+              formattedAddress: park.address,
+              lat: park.lat,
+              lng: park.long,
+              favorite: true
+            },
+            createdAt: park.createdAt,
+            updatedAt: park.updatedAt
+          }
+          dogParks.push(dogPark);
           callback();
         }).catch(function(error){
           callback(error);
@@ -33,7 +42,7 @@ router.get('/index',function(req,res){
         if(error){
           console.log('error',error);
         }else{
-          res.render('favorites/index',{parks:dogParks,user:user,times:times})
+          res.render('parks/show',{venues:dogParks,user:user,times:times,parks:{}})
         }
       })
       })
