@@ -31,15 +31,22 @@
         </div>
         <% } %>
         <div>
+          <% if(user && !venues[i].favorite){ %>
           <form action='/favorites/add' method='post' class='hidden-form add-form'>
             <input type='hidden' name='name' value='<%= venues[i].name %>'>
             <input type='hidden' name='address' value='<%= venues[i].location.formattedAddress %>'>
             <input type='hidden' name='lat' value='<%= venues[i].location.lat %>'>
             <input type='hidden' name='long' value='<%= venues[i].location.lng %>'>
-            <% if(user){ %>
-              <button type='submit' class='btn favorite'>Favorite</button>
-            <% } %>
+            <button type='submit' class='btn favorite'>Favorite</button>
           </form>
+          <% } %>
+          <% if (user && venues[i].favorite) { %>
+          <form action='/favorites/checkin' method='post' class='checkin-form'>
+            <input type='hidden' name='parkid' value='<%= venues[i].id %>'>
+            <input type='hidden' name='userid' value='<%= user.id %>'>
+            <button type='submit' class='btn btn-success checkin-button'>Checkin</button>
+          </form>
+          <% } %>
         </div>
       </div>
       </div>

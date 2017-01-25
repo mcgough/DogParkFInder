@@ -27,9 +27,9 @@ router.get('/index',function(req,res){
             location: {
               formattedAddress: park.address,
               lat: park.lat,
-              lng: park.long,
-              favorite: true
+              lng: park.long
             },
+            favorite: true,
             createdAt: park.createdAt,
             updatedAt: park.updatedAt
           }
