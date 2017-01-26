@@ -20,11 +20,13 @@
           </div>
         </div>
         <div class="details">
-        <% if(venues[i].location.distance) { %>
         <div class="distance">
+        <% if (venues[i].location.distance) { %>
           <span><%= venues[i].location.distance %> miles</span>
-        </div>
+        <% } else { %>
+          <span class="distance-placeholder" data-lat="<%= venues[i].location.lat %>" data-lng="<%= venues[i].location.lng %>"></span>
         <% } %>
+        </div>
         <% if(user) { %>
         <div>
           <p class='numDogs'>Dogs Playing Now: <span class="number">0</span></p>
