@@ -1,7 +1,7 @@
 $(function() {
-	if(!window.localStorage.coords) {
+	if(!window.sessionStorage.coords) {
 	  if ("geolocation" in navigator) {
-	  	if (!window.localStorage.geoCheck) {
+	  	if (!window.sessionStorage.geoCheck) {
 				$('.geo-popup').addClass('visible');
 	  	}
 	  	var coords = {};
@@ -9,17 +9,17 @@ $(function() {
 	    	$('.geo-popup').removeClass('visible');
 	      coords.lat = pos.coords.latitude;
 	      coords.lng = pos.coords.longitude;
-	      window.localStorage.setItem('coords',JSON.stringify(coords));
+	      window.sessionStorage.setItem('coords',JSON.stringify(coords));
 	      $('.geo-input').val(JSON.stringify(coords));
 	    	$('.geo-form').removeClass('hidden');
 	    });
-	    window.localStorage.setItem('geoCheck','true');
+	    window.sessionStorage.setItem('geoCheck','true');
 	  } else {
-	  	window.localStorage.setItem('geoCheck','true');
+	  	window.sessionStorage.setItem('geoCheck','true');
 	    alert('Your browser does not allow geolocation');
 	  }
 	} else {
-		var coords = window.localStorage.getItem('coords');
+		var coords = window.sessionStorage.getItem('coords');
 	 	$('.geo-input').val(coords);
 	 	$('.geo-form').removeClass('hidden');
 	}
