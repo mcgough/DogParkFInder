@@ -2,3 +2,7 @@ Todo List:
 
 - user location for general searches
 - check if geo is already enabled
+- unique marker for favorites
+- indicate favorites in list
+- sort by # of dogs then distance
+- add find my location button

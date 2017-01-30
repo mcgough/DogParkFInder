@@ -9,8 +9,6 @@ function distance(lat1, lon1, lat2, lon2) {
 }
 
 $(function(){
-
-  $('#main-input').focus();
   $('#login-email').focus();
   $('#reg-email').focus();
   $('.add-form').on('click',function(e){
@@ -69,16 +67,27 @@ function parksMap(){
         center: new google.maps.LatLng(newCityLat,newCityLong),
         zoom: 13,
         styles: mapDiscreet
-        // mapTypeId: google.maps.MapTypeId.ROADMAP
-        // disableDefaultUI: true
       }
       var map = new google.maps.Map(mapCanvas, mapOptions)
       $('.latlong').each(function(){
-        var coor = $(this).val().split(',');
-        var parkLat = parseFloat(coor[0]);
-        var parkLong = parseFloat(coor[1]);
+        var coor = $(this).val().split(','),
+            parkLat = parseFloat(coor[0]),
+            parkLong = parseFloat(coor[1]),
+            icon = {
+              url: './../images/dog-park-15-152-260714.png',
+              size: new google.maps.Size(30, 30),
+              scaledSize: new google.maps.Size(30, 30)
+            };
+        if ($(this).hasClass('favorite')) {
+          icon = {
+            url: './../images/orange_star.png',
+            size: new google.maps.Size(35, 35),
+            scaledSize: new google.maps.Size(35, 35)
+          };
+        };  
         var marker = new google.maps.Marker({
-          position: new google.maps.LatLng(parkLat,parkLong),
+          position: {lat: parkLat, lng: parkLong},
+          icon: icon
         });
         var parkName = $(this).siblings().eq(0).text(),
             directions = $(this).siblings().eq(1).html(),
@@ -254,7 +263,7 @@ function showJs(){
           var count = 0;
           $('.park-name').each(function(){
             if($(this).text() === key){
-              console.log(key,'===',$(this).text(),'match!!!!!!!',currentValidCheckins[key].length);
+              // console.log(key,'===',$(this).text(),'match!!!!!!!',currentValidCheckins[key].length);
               $('.numDogs .number').eq(count).text(currentValidCheckins[key].length);
             }
             count++;

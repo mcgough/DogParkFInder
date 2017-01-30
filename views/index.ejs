@@ -11,14 +11,14 @@
   <div class=''>
     <h1 id='main-title' class='text-center'>DogParkFinder</h1>
   </div>
-  <form action="/parks/:id" method="get" role="form" id='main-search'>
+  <form action="/parks/search" method="get" role="form" id='main-search'>
     <div class="form-group welcome-form">
       <input type="text" class="form-control main-search" name='q' id="main-input" placeholder="Search for a park in your neighborhood">
       <button type="submit" class="btn btn-default main-search-button">Search</button>
     </div>
   </form>
   <div class="geo">
-    <form action="/parks" method="get" class="geo-form hidden">
+    <form action="/parks/nearme" method="get" class="geo-form hidden">
       <input style="display:none" name="geo" class="geo-input">
       <button type="submit" class="geo-search btn btn-default main-search-button">Find Parks Near Me</button>
     </form>

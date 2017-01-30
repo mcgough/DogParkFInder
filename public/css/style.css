@@ -1385,6 +1385,15 @@ legend {
   cursor: pointer;
   padding: 10px 15px;
 }
+.location .star {
+  width: 5%;
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+.location .star img {
+  width: 100%;
+}
 .location .park {
   margin-bottom: 0;
 }
@@ -1400,6 +1409,12 @@ legend {
   -moz-transform: skew(-5deg);
   -ms-transform: skew(-5deg);
   -o-transform: skew(-5deg);
+}
+.location .details {
+  margin-right: 5%;
+}
+.location.favorite .details {
+  margin-right: 10%;
 }
 .location:hover {
   -webkit-transform: skew(0deg);

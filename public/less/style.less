@@ -92,6 +92,15 @@ legend {
 	.justify-content(space-between);
 	cursor: pointer;
 	padding: 10px 15px;
+	.star {
+		width: 5%;
+		position: absolute;
+		top: 5px;
+		right: 10px;
+		img {
+			width: 100%;
+		}
+	}
 	.park {
 		margin-bottom: 0;
 	}
@@ -101,6 +110,14 @@ legend {
 	.btn {
 		margin-top: 2.5%;
 		.transform(skew(-5deg));
+	}
+	.details {
+		margin-right: 5%;
+	}
+	&.favorite {
+		.details {
+			margin-right: 10%;
+		}
 	}
 	&:hover {
 		.transform(skew(0deg));
