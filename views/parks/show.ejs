@@ -14,7 +14,7 @@
           <input type='hidden' class='latlong <% if (user && venues[i].favorite) { %> favorite<% } %>' value='<%= venues[i].location.lat %>,<%= venues[i].location.lng %>'>
           <% if (user) { %>
           <div>
-            <p class='numDogs'>Dogs Playing Now: <span class="number">0</span></p>
+            <p class='numDogs'>Dogs Playing Now: <span class="number"><%= venues[i].checkInCount %></span></p>
           </div>
           <% } %>
           <div class='address'>
@@ -61,13 +61,7 @@
   </div>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB62Pb7a4yF-S23s7IY33PueRTuaJKqySI" type="text/javascript"></script>
-<script type="text/javascript">
-  var venues = <%-JSON.stringify(venues) %>
-  var parks = <%-JSON.stringify(parks) %>
-  var checks = <%-JSON.stringify(times) %>
-  showJs();
-  parksMap();
-</script>
+
 <% include ../partials/footer.ejs %>
 
 

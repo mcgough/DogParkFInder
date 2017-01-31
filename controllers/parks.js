@@ -144,27 +144,6 @@ router.get('/search',function(req,res){
                 })
           })
         })
-      //Get query coords from Google
-      // request(geoCodeUrl, function(error,response,data) {
-      //   if (!error && response.statusCode === 200) {
-      //     var data = JSON.parse(data),
-      //         queryCoords = data.results[0].geometry.location;
-      //     // Set distance between dog park and query
-      //     venues.forEach(function(venue) {
-      //       venueCoords = {
-      //         lat: venue.location.lat,
-      //         lng: venue.location.lng
-      //       };
-      //       // venue.location.distance = parseFloat(distance(venueCoords.lat,venueCoords.lng,queryCoords.lat,queryCoords.lng)).toFixed(1);
-      //     });
-      //     Location list sort
-      //     venues = venues.sort(function(a,b) {
-      //       return a.location.distance - b.location.distance;
-      //     });
-      //     Database call for parks and checkins
-        
-      //   }
-      // })
     }else{
       if(error){
         console.log('error',error)
