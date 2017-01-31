@@ -131,18 +131,14 @@ function indexJs(){
    if(checks[i].userid === user.id){
     for(var j = 0; j < dogRuns.length;j++){
       if(checks[i].parkid === dogRuns[j].id){
-        console.log('here', dogRuns[j].name);
         $('.park-name').each(function(){
           if($(this).text() === dogRuns[j].name){
-            console.log('yes',$(this))
             // $(this).parent().parent().children().eq(4);
             $(this).parent().parent().siblings().hide();
             // console.log($(this).parent().parent().children().eq(3));
             $(this).parent().parent().children().eq(2).addClass('hidden');
             $(this).parent().parent().children($('.checkout-button').removeClass('hidden'));
             $(this).parent().parent().children($('.remove-button').addClass('hidden'))
-          }else{
-            console.log('no')
           }
         })
 
@@ -281,10 +277,8 @@ function dogListPage() {
   var currentTimeMin = (new Date().getTime() / 1000 / 3600 * 60);
   var validCheckIns = {} //object where valid checkin times and userId are stored
   for(var key in checkins){
-    console.log('!!!!!!!',Date.parse(checkins[key]) / 1000 / 3600 * 60)
     if(currentTimeMin - (Date.parse(checkins[key])) / 1000 / 3600 * 60 <= 60){
       if(!validCheckIns[key]){
-        console.log('here')
         validCheckIns[key] = checkins[key];
         mins.push(Math.floor(currentTimeMin - (Date.parse(checkins[key])) / 1000 / 3600 * 60))
       }else{
@@ -292,16 +286,13 @@ function dogListPage() {
       }
     }
   }
-  console.log(mins)
   //finding users from keys in validCheckIns object and storing in validCheckedUsers array, eventually want to be dog name
   var validCheckedUsers = []
   for(var user in owners){
     for(var id in validCheckIns){
       if (user === id){
         var xuser = owners
-        console.log(xuser)
         var checkIn = validCheckIns[id]
-        console.log(checkIn)
         validCheckedUsers.push(owners[user])
       }
     }

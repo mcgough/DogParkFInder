@@ -23,6 +23,10 @@ function metresToMiles(int) {
      return int*0.000621371192;
 }
 
+function withInHourCheck(time) {
+  return (new Date().getTime() / 1000 / 3600 * 60) - (Date.parse(time) / 1000 / 3600 * 60) <= 60
+}
+
 router.get('/nearme', function(req,res) {
   var coords = JSON.parse(req.query.geo),
       user = req.getUser();
@@ -85,7 +89,6 @@ router.get('/search',function(req,res){
       near = req.query.q,
       fourSquareUrl = 'https://api.foursquare.com/v2/venues/search?client_id=' + fourSq + '&client_secret=' + fourSqSec + '&v=20130815&near=' + near + '&radius=2500&query=offleash dog park',
       geoCodeUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + near + '&key=' + process.env.geoCodeKey;
-  console.log(user);
   //Get locations from 4Square
   request(fourSquareUrl,function(error,response,data) {
     if(!error && response.statusCode === 200){
@@ -93,6 +96,7 @@ router.get('/search',function(req,res){
           favorites = [],
           times = [],
           dogParks = [],
+          checkedInDogParks = [],
           userParkIds = [],
           venues = locations.response.venues.filter(function(venue) {
             if (venue.categories[0]) {
@@ -102,7 +106,9 @@ router.get('/search',function(req,res){
       db.checkin.findAll()
         .then(function(list){
           list.forEach(function(time){
-            times.push({time:Date.parse(time.createdAt),parkid:time.parkId,userid:time.userId});
+            if (withInHourCheck(time.createdAt)) {
+              times.push({time:Date.parse(time.createdAt),parkid:time.parkId,userid:time.userId,withInHour: withInHourCheck(time.createdAt)});
+            }
           })
         })
         .then(function(){
@@ -114,10 +120,22 @@ router.get('/search',function(req,res){
                     if (_.findWhere(ids, {parkId: park.id})) {
                       dogParks.push(park);
                     }
+                    if (_.findWhere(times,{parkid:park.id})) {
+                      checkedInDogParks.push({
+                        name: park.name,
+                        parkId: park.id,
+                        count: _.where(times,{parkid:park.id}).length
+                      });
+                    }
                   })
                   venues.forEach(function(park) {
                     if (_.findWhere(dogParks,{name: park.name})) {
                       park.favorite = true;
+                    }
+                    if (_.findWhere(checkedInDogParks, {name: park.name})) {
+                      park.checkInCount = _.findWhere(checkedInDogParks, {name: park.name}).count;
+                    } else {
+                      park.checkInCount = 0;
                     }
                   })
                 })
