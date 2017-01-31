@@ -3,15 +3,23 @@ var router = express.Router();
 var request = require('request');
 var db = require('../models');
 var async = require('async');
+var _ = require('underscore');
+
+function withInHourCheck(time) {
+  return (new Date().getTime() / 1000 / 3600 * 60) - (Date.parse(time) / 1000 / 3600 * 60) <= 60
+}
 
 router.get('/index',function(req,res){
   var user = req.getUser();
   if(req.getUser()){
-    var times = [];
+    var times = [],
+        checkedInDogParks = [];
     db.checkin.findAll()
-      .then(function(list){
-        list.forEach(function(time){
-          times.push({time:Date.parse(time.createdAt),parkid:time.parkId,userid:time.userId});
+      .then(function(checkins){
+        checkins.forEach(function(time){
+          if (withInHourCheck(time.createdAt)) {
+            times.push({time:Date.parse(time.createdAt),parkid:time.parkId,userid:time.userId,withInHour: withInHourCheck(time.createdAt)});
+          }
         })
       })
       .then(function(){
@@ -37,6 +45,11 @@ router.get('/index',function(req,res){
                     favorite: true,
                     createdAt: park.createdAt,
                     updatedAt: park.updatedAt
+                  }
+                  if (_.findWhere(times,{parkid:park.id})) {
+                    dogPark.checkInCount = _.where(times,{parkid:park.id}).length;
+                  } else {
+                    dogPark.checkInCount = 0;
                   }
                   dogParks.push(dogPark);
                   callback();

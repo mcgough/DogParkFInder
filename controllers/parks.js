@@ -50,27 +50,40 @@ router.get('/nearme', function(req,res) {
       } else {
         var userID = user.id,
             dogParks = [],
+            checkedInDogParks = [],
             times = [];
         db.checkin.findAll()
           .then(function(response) {
             var checkins = response;
-            checkins.forEach(function(checkin) {
-              times.push({time:Date.parse(checkin.createdAt),parkid:checkin.parkId,userid:checkin.userId})
+            checkins.forEach(function(time){
+              if (withInHourCheck(time.createdAt)) {
+                times.push({time:Date.parse(time.createdAt),parkid:time.parkId,userid:time.userId,withInHour: withInHourCheck(time.createdAt)});
+              }
             })
             db.park.findAll()
-              .then(function(response) {
-                var parks = response;
-                db.parksusers.findAll({where:{userId: userID}})
-                  .then(function(response) {
-                    var ids = response;
-                    parks.forEach(function(park) {
+              .then(function(parks){
+                db.parksusers.findAll({where: {userId: user.id}})
+                  .then(function(ids) {
+                    parks.forEach(function(park){
                       if (_.findWhere(ids, {parkId: park.id})) {
                         dogParks.push(park);
-                      }  
+                      }
+                      if (_.findWhere(times,{parkid:park.id})) {
+                        checkedInDogParks.push({
+                          name: park.name,
+                          parkId: park.id,
+                          count: _.where(times,{parkid:park.id}).length
+                        });
+                      }
                     })
-                    venues.forEach(function(venue) {
-                      if (_.findWhere(dogParks,{name: venue.name})) {
-                        venue.favorite = true;
+                    venues.forEach(function(park) {
+                      if (_.findWhere(dogParks,{name: park.name})) {
+                        park.favorite = true;
+                      }
+                      if (_.findWhere(checkedInDogParks, {name: park.name})) {
+                        park.checkInCount = _.findWhere(checkedInDogParks, {name: park.name}).count;
+                      } else {
+                        park.checkInCount = 0;
                       }
                     })
                     res.render('parks/show',{venues:venues, user: user, parks:dogParks,times:times});
@@ -144,6 +157,27 @@ router.get('/search',function(req,res){
                 })
           })
         })
+      //Get query coords from Google
+      // request(geoCodeUrl, function(error,response,data) {
+      //   if (!error && response.statusCode === 200) {
+      //     var data = JSON.parse(data),
+      //         queryCoords = data.results[0].geometry.location;
+      //     // Set distance between dog park and query
+      //     venues.forEach(function(venue) {
+      //       venueCoords = {
+      //         lat: venue.location.lat,
+      //         lng: venue.location.lng
+      //       };
+      //       // venue.location.distance = parseFloat(distance(venueCoords.lat,venueCoords.lng,queryCoords.lat,queryCoords.lng)).toFixed(1);
+      //     });
+      //     Location list sort
+      //     venues = venues.sort(function(a,b) {
+      //       return a.location.distance - b.location.distance;
+      //     });
+      //     Database call for parks and checkins
+        
+      //   }
+      // })
     }else{
       if(error){
         console.log('error',error)
