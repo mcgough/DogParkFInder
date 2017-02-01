@@ -101,15 +101,23 @@ legend {
 			width: 100%;
 		}
 	}
+	.location-dog {
+		width: 25px;
+		margin-right: 5px;
+	}
 	.park {
 		margin-bottom: 0;
 	}
 	a {
-		.transition(all .25s ease-in-out);
+		.transition(all .3s ease-in-out);
 	}
 	.btn {
 		margin-top: 2.5%;
+		background: none;
+		border: 1px solid #ccc;
+		text-transform: uppercase;
 		.transform(skew(-5deg));
+		.transition(all .3s ease-in-out);
 	}
 	.details {
 		margin-right: 5%;
@@ -127,6 +135,17 @@ legend {
 		}
 		.btn {
 			.transform(skew(0deg));
+			color: #fff;
+			background: green;
+			border-color: green;
+			&.checkin-button {
+				background: orange;
+				border-color: orange;
+			}
+			&.checkout-button {
+				background: red;
+				border-color: red;
+			}
 		}
 	}
 }

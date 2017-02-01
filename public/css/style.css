@@ -322,10 +322,6 @@ ul.nav {
   -o-transition: all 0.25s ease-in-out;
   transition: all 0.25s ease-in-out;
 }
-.location:hover {
-  background: #ccc;
-  opacity: .9;
-}
 .location p {
   margin: 0;
 }
@@ -964,10 +960,6 @@ ul.nav {
   -o-transition: all 0.25s ease-in-out;
   transition: all 0.25s ease-in-out;
 }
-.location:hover {
-  background: #ccc;
-  opacity: .9;
-}
 .location p {
   margin: 0;
 }
@@ -1398,21 +1390,32 @@ legend {
 .location .star img {
   width: 100%;
 }
+.location .location-dog {
+  width: 25px;
+  margin-right: 5px;
+}
 .location .park {
   margin-bottom: 0;
 }
 .location a {
-  -webkit-transition: all 0.25s ease-in-out;
-  -moz-transition: all 0.25s ease-in-out;
-  -ms-transition: all 0.25s ease-in-out;
-  -o-transition: all 0.25s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
 }
 .location .btn {
   margin-top: 2.5%;
+  background: none;
+  border: 1px solid #ccc;
+  text-transform: uppercase;
   -webkit-transform: skew(-5deg);
   -moz-transform: skew(-5deg);
   -ms-transform: skew(-5deg);
   -o-transform: skew(-5deg);
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
 }
 .location .details {
   margin-right: 5%;
@@ -1435,6 +1438,17 @@ legend {
   -moz-transform: skew(0deg);
   -ms-transform: skew(0deg);
   -o-transform: skew(0deg);
+  color: #fff;
+  background: green;
+  border-color: green;
+}
+.location:hover .btn.checkin-button {
+  background: orange;
+  border-color: orange;
+}
+.location:hover .btn.checkout-button {
+  background: red;
+  border-color: red;
 }
 .info-window {
   text-align: center;

@@ -12,17 +12,17 @@
         <div class='park hidden-val'>
           <p class='park-name'><%= venues[i].name %></p>
           <input type='hidden' class='latlong <% if (user && venues[i].favorite) { %> favorite<% } %>' value='<%= venues[i].location.lat %>,<%= venues[i].location.lng %>'>
-          <% if (user) { %>
-          <div>
-            <p class='numDogs'>Dogs Playing Now: <span class="number"><%= venues[i].checkInCount %></span></p>
-          </div>
-          <% } %>
           <div class='address'>
             <a href='https://www.google.com/maps/place/<%= venues[i].location.formattedAddress %>'>
             Directions
               
             </a>
           </div>
+          <% if (user) { %>
+          <div>
+            <p class='numDogs'><img class="location-dog" src="/images/dog-park-15-152-260714.png"><span class="number">: <%= venues[i].checkInCount %></span></p>
+          </div>
+          <% } %>
         </div>
         <div class="details">
         <div class="distance">
@@ -43,12 +43,19 @@
             <button type='submit' class='btn favorite'>Favorite</button>
           </form>
           <% } %>
-          <% if (venues[i].favorite) { %>
+          <% if (venues[i].favorite && !userHerePark) { %>
           <form action='/favorites/checkin' method='post' class='checkin-form'>
             <input type='hidden' name='parkid' value='<%= venues[i].id %>'>
             <input type='hidden' name='userid' value='<%= user.id %>'>
-            <button type='submit' class='btn btn-success checkin-button'>Checkin</button>
+            <button type='submit' class='btn checkin-button'>Checkin</button>
           </form>
+          <% } %>
+          <% if (venues[i].favorite && userHerePark && venues[i].appParkId === userHerePark.parkid) { %>
+            <form action='/favorites/checkout' method='post' class='checkout-form'>
+              <input type='hidden' name='parkid' value='<%= venues[i].appParkId %>'>
+              <input type='hidden' name='userid' value='<%= user.id %>'>
+              <button type='submit' class='btn checkout-button'>Checkout</button>
+            </form>
           <% } %>
           <% if (venues[i].favorite) { %>
           <div class='star'><img src="./../images/orange_star.png"></div>
