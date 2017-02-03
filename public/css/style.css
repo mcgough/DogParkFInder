@@ -1362,6 +1362,15 @@ legend {
 .my-close {
   cursor: pointer;
 }
+.container {
+  position: relative;
+  height: 50vh;
+}
+.checkins-overlay {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+}
 .location {
   width: 48%;
   -webkit-transform: skew(-15deg);
@@ -1428,6 +1437,7 @@ legend {
   -moz-transform: skew(0deg);
   -ms-transform: skew(0deg);
   -o-transform: skew(0deg);
+  background: #f1f1f1;
   opacity: 1;
 }
 .location:hover a {
@@ -1438,17 +1448,20 @@ legend {
   -moz-transform: skew(0deg);
   -ms-transform: skew(0deg);
   -o-transform: skew(0deg);
+  color: #000;
+}
+.location:hover .btn:hover {
+  background: #66B266;
+  border-color: #66B266;
   color: #fff;
-  background: green;
-  border-color: green;
 }
-.location:hover .btn.checkin-button {
-  background: orange;
-  border-color: orange;
+.location:hover .btn.checkin-button:hover {
+  background: #FFC04C;
+  border-color: #FFC04C;
 }
-.location:hover .btn.checkout-button {
-  background: red;
-  border-color: red;
+.location:hover .btn.checkout-button:hover {
+  background: #FF7F7F;
+  border-color: #FF7F7F;
 }
 .info-window {
   text-align: center;

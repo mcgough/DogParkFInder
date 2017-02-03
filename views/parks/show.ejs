@@ -6,69 +6,72 @@
   <div class='row error hidden text-center'>
     <h2 class='no-parks'>Sorry no parks were found in that city</h2>
   </div>
-  <div class="results-container">
-     <% for(var i = 0; i < venues.length; i++){ %>
-      <div class="location<% if (user && venues[i].favorite) { %> favorite<% } %>">
-        <div class='park hidden-val'>
-          <p class='park-name'><%= venues[i].name %></p>
-          <input type='hidden' class='latlong <% if (user && venues[i].favorite) { %> favorite<% } %>' value='<%= venues[i].location.lat %>,<%= venues[i].location.lng %>'>
-          <div class='address'>
-            <a href='https://www.google.com/maps/place/<%= venues[i].location.formattedAddress %>'>
-            Directions
-              
-            </a>
+  <div class="container">
+    <% include ../partials/show/checkin-overlay.ejs %>
+    <div class="results-container">
+       <% for(var i = 0; i < venues.length; i++){ %>
+        <div class="location<% if (user && venues[i].favorite) { %> favorite<% } %>">
+          <div class='park hidden-val'>
+            <p class='park-name'><%= venues[i].name %></p>
+            <input type='hidden' class='latlong <% if (user && venues[i].favorite) { %> favorite<% } %>' value='<%= venues[i].location.lat %>,<%= venues[i].location.lng %>'>
+            <div class='address'>
+              <a href='https://www.google.com/maps/place/<%= venues[i].location.formattedAddress %>'>
+              Directions
+                
+              </a>
+            </div>
+            <% if (user) { %>
+            <div>
+              <a class="checkin-list" href="/favorites/:<% if (venues[i].appParkId) { %><%= venues[i].appParkId %><% } else { %>0<% } %>"><p class='numDogs'><img class="location-dog" src="/images/dog-park-15-152-260714.png"><span class="number">: <%= venues[i].checkInCount %></span></p></a>
+            </div>
+            <% } %>
           </div>
-          <% if (user) { %>
+          <div class="details">
+          <div class="distance">
+          <% if (venues[i].location.distance) { %>
+            <span><%= venues[i].location.distance %> miles</span>
+          <% } else { %>
+            <span class="distance-placeholder" data-lat="<%= venues[i].location.lat %>" data-lng="<%= venues[i].location.lng %>"></span>
+          <% } %>
+          </div>
+          <% if(user) { %>
           <div>
-            <p class='numDogs'><img class="location-dog" src="/images/dog-park-15-152-260714.png"><span class="number">: <%= venues[i].checkInCount %></span></p>
-          </div>
-          <% } %>
-        </div>
-        <div class="details">
-        <div class="distance">
-        <% if (venues[i].location.distance) { %>
-          <span><%= venues[i].location.distance %> miles</span>
-        <% } else { %>
-          <span class="distance-placeholder" data-lat="<%= venues[i].location.lat %>" data-lng="<%= venues[i].location.lng %>"></span>
-        <% } %>
-        </div>
-        <% if(user) { %>
-        <div>
-          <% if (!venues[i].favorite){ %>
-          <form action='/favorites/add' method='post' class='hidden-form add-form'>
-            <input type='hidden' name='name' value='<%= venues[i].name %>'>
-            <input type='hidden' name='address' value='<%= venues[i].location.formattedAddress %>'>
-            <input type='hidden' name='lat' value='<%= venues[i].location.lat %>'>
-            <input type='hidden' name='long' value='<%= venues[i].location.lng %>'>
-            <button type='submit' class='btn favorite'>Favorite</button>
-          </form>
-          <% } %>
-          <% if (venues[i].favorite && !userHerePark) { %>
-          <form action='/favorites/checkin' method='post' class='checkin-form'>
-            <input type='hidden' name='parkid' value='<%= venues[i].id %>'>
-            <input type='hidden' name='userid' value='<%= user.id %>'>
-            <button type='submit' class='btn checkin-button'>Checkin</button>
-          </form>
-          <% } %>
-          <% if (venues[i].favorite && userHerePark && venues[i].appParkId === userHerePark.parkid) { %>
-            <form action='/favorites/checkout' method='post' class='checkout-form'>
+            <% if (!venues[i].favorite){ %>
+            <form action='/favorites/add' method='post' class='hidden-form add-form'>
+              <input type='hidden' name='name' value='<%= venues[i].name %>'>
+              <input type='hidden' name='address' value='<%= venues[i].location.formattedAddress %>'>
+              <input type='hidden' name='lat' value='<%= venues[i].location.lat %>'>
+              <input type='hidden' name='long' value='<%= venues[i].location.lng %>'>
+              <button type='submit' class='btn favorite'>Favorite</button>
+            </form>
+            <% } %>
+            <% if (venues[i].favorite && !userHerePark) { %>
+            <form action='/favorites/checkin' method='post' class='checkin-form'>
               <input type='hidden' name='parkid' value='<%= venues[i].appParkId %>'>
               <input type='hidden' name='userid' value='<%= user.id %>'>
-              <button type='submit' class='btn checkout-button'>Checkout</button>
+              <button type='submit' class='btn checkin-button'>Checkin</button>
             </form>
-          <% } %>
-          <% if (venues[i].favorite) { %>
-          <div class='star'><img src="./../images/orange_star.png"></div>
+            <% } %>
+            <% if (venues[i].favorite && userHerePark && venues[i].appParkId === userHerePark.parkid) { %>
+              <form action='/favorites/checkout' method='post' class='checkout-form'>
+                <input type='hidden' name='parkid' value='<%= venues[i].appParkId %>'>
+                <input type='hidden' name='userid' value='<%= user.id %>'>
+                <button type='submit' class='btn checkout-button'>Checkout</button>
+              </form>
+            <% } %>
+            <% if (venues[i].favorite) { %>
+            <div class='star'><img src="./../images/orange_star.png"></div>
+            <% } %>
+          </div>
           <% } %>
         </div>
-        <% } %>
-      </div>
-      </div>
-    <% } %>
+        </div>
+      <% } %>
+    </div>
   </div>
-
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB62Pb7a4yF-S23s7IY33PueRTuaJKqySI" type="text/javascript"></script>
 <script src='/js/script.js'></script>
+
 <% include ../partials/footer.ejs %>
 
 

@@ -93,6 +93,9 @@ router.get('/nearme', function(req,res) {
                       }
                     })
                     venues.forEach(function(park) {
+                      if (_.findWhere(parks,{name: park.name})) {
+                        park.appParkId = _.findWhere(parks,{name: park.name}).id;
+                      }
                       if (_.findWhere(dogParks,{name: park.name})) {
                         park.favorite = true;
                       }
@@ -120,6 +123,7 @@ router.get('/nearme', function(req,res) {
 router.get('/search',function(req,res){
   
   var user = req.getUser(),
+      userID = user.id,
       near = req.query.q,
       fourSquareUrl = 'https://api.foursquare.com/v2/venues/search?client_id=' + fourSq + '&client_secret=' + fourSqSec + '&v=20130815&near=' + near + '&radius=2500&query=offleash dog park',
       geoCodeUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + near + '&key=' + process.env.geoCodeKey;
@@ -149,7 +153,7 @@ router.get('/search',function(req,res){
                 withInHour: withInHourCheck(time.createdAt),
                 userHere: false                  
               };
-              if (user.id === time.userId) {
+              if (userID === time.userId) {
                 timeObj.userHere = true;
                 userHerePark = timeObj;
               }
@@ -179,12 +183,16 @@ router.get('/search',function(req,res){
                     }
                   })
                   venues.forEach(function(park) {
+                    if (_.findWhere(parks,{name: park.name})) {
+                      park.appParkId = _.findWhere(parks,{name: park.name}).id;
+                    }
                     if (_.findWhere(dogParks,{name: park.name})) {
                       park.favorite = true;
                     }
+                    
                     if (_.findWhere(checkedInDogParks, {name: park.name})) {
                       park.checkInCount = _.findWhere(checkedInDogParks, {name: park.name}).count;
-                      park.appParkId = _.findWhere(checkedInDogParks, {name: park.name}).parkId;
+                      park.appParkId = _.findWhere(checkedInDogParks, {name: park.name}).parkId || false;
                     } else {
                       park.checkInCount = 0;
                     }

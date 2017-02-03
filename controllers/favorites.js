@@ -56,7 +56,8 @@ router.get('/index',function(req,res){
                     },
                     favorite: true,
                     createdAt: park.createdAt,
-                    updatedAt: park.updatedAt
+                    updatedAt: park.updatedAt,
+                    appParkId: park.id
                   }
                   if (_.findWhere(times,{parkid:park.id})) {
                     dogPark.checkInCount = _.where(times,{parkid:park.id}).length;
@@ -123,40 +124,35 @@ router.post('/remove',function(req,res){
 router.get('/:id',function(req,res){
   var user = req.getUser();
   var id = req.params.id;
-  var parkid = id.slice(1);
-  var checkin = {};
-  // var peopleIds = []
-  var dogs = {};
-  var parkName = [];
-  // console.log('!!!!!!!',typeof parkid, parseInt(parkid));
-  db.park.find({where:{id:parkid}}).then(function(name){
-    parkName.push(name)
-  }).then(function(){
-  db.checkin.findAll({where:{parkId: parkid}}).then(function(park){
-    park.forEach(function(item){
-      checkin[item.userId] = item.createdAt;
-      // peopleIds.push(item.userId);
-    })
-  }).then(function(){
-    db.user.findAll().then(function(person){
-      person.forEach(function(item){
-        dogs[item.id] = item.username
+  if (id === 'undefined') {
+    console.log('nothing there ###########');
+  } else {
+    var parkid = id.slice(1);
+    var checkin = {};
+    var dogs = {};
+    var parkName = [];
+    db.park.find({where:{id:parkid}}).then(function(name){
+      parkName.push(name)
+    }).then(function(){
+    db.checkin.findAll({where:{parkId: parkid}}).then(function(park){
+      park.forEach(function(item){
+        checkin[item.userId] = item.createdAt;
+        // peopleIds.push(item.userId);
       })
     }).then(function(){
-    res.render('favorites/list',{checkin:checkin,dogs:dogs,user:user,parkName:parkName})
-  }).catch(function(err){
-    console.log(err)
+      db.user.findAll().then(function(person){
+        person.forEach(function(item){
+          dogs[item.id] = item.username
+        })
+      }).then(function(){
+      res.send({checkin:checkin,dogs:dogs,user:user,parkName:parkName})
+    }).catch(function(err){
+      console.log(err)
+    })
   })
+  })
+    
+  }
 })
-})
-})
-
-
-
-
-
-
-
-
 
 module.exports = router;
