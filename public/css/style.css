@@ -1413,7 +1413,7 @@ legend {
   -o-transition: all 0.3s ease-in-out;
 }
 .location .btn {
-  margin-top: 2.5%;
+  margin-top: 20%;
   background: none;
   border: 1px solid #ccc;
   text-transform: uppercase;
