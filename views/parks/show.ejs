@@ -22,7 +22,7 @@
             </div>
             <% if (user) { %>
             <div>
-              <a class="checkin-list" href="/favorites/:<% if (venues[i].appParkId) { %><%= venues[i].appParkId %><% } else { %>0<% } %>"><p class='numDogs'><img class="location-dog" src="/images/dog-park-15-152-260714.png"><span class="number">: <%= venues[i].checkInCount %></span></p></a>
+              <p class='numDogs'><a class="checkin-list" href="/favorites/:<% if (venues[i].appParkId) { %><%= venues[i].appParkId %><% } else { %>0<% } %>"><img class="location-dog" src="/images/dog-park-15-152-260714.png"><span class="number">: <%= venues[i].checkInCount %></a></span></p>
             </div>
             <% } %>
           </div>

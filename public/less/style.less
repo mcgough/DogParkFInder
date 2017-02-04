@@ -5,6 +5,7 @@
 @media screen and (max-width: 668px) {
 	ul.nav {
 		.transform(skew(0deg));
+		height: auto;
 	}
 }
 
@@ -109,6 +110,11 @@ legend {
 			width: 100%;
 		}
 	}
+	.numDogs {
+		position: absolute;
+		bottom: 15px;
+
+	}
 	.location-dog {
 		width: 25px;
 		margin-right: 5px;
@@ -124,8 +130,11 @@ legend {
 		background: none;
 		border: 1px solid #ccc;
 		text-transform: uppercase;
+		position: absolute;
+		bottom: 10px;
+		right: 15px;
 		.transform(skew(-5deg));
-		.transition(all .3s ease-in-out);
+		.transition(all .25s ease-in-out);
 	}
 	.details {
 		margin-right: 5%;
@@ -139,6 +148,7 @@ legend {
 		.transform(skew(0deg));
 		background: #f1f1f1;
 		opacity: 1;
+		z-index: 10;
 		a {
 			color: #000;
 		}
@@ -163,6 +173,21 @@ legend {
 					
 				}
 			}
+		}
+	}
+	.address {
+		margin-bottom: 25%;
+	}
+	@media screen and (max-width: 668px) {
+		.flex-wrap(wrap);
+		.star {
+			width: 6.5%;
+		}
+		.btn,.numDogs {
+			position: static;
+		}
+		.numDogs {
+			margin: 10% 0;
 		}
 	}
 }

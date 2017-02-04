@@ -1280,6 +1280,7 @@ a {
     -moz-transform: skew(0deg);
     -ms-transform: skew(0deg);
     -o-transform: skew(0deg);
+    height: auto;
   }
 }
 .welcome-form input {
@@ -1399,6 +1400,10 @@ legend {
 .location .star img {
   width: 100%;
 }
+.location .numDogs {
+  position: absolute;
+  bottom: 15px;
+}
 .location .location-dog {
   width: 25px;
   margin-right: 5px;
@@ -1417,14 +1422,17 @@ legend {
   background: none;
   border: 1px solid #ccc;
   text-transform: uppercase;
+  position: absolute;
+  bottom: 10px;
+  right: 15px;
   -webkit-transform: skew(-5deg);
   -moz-transform: skew(-5deg);
   -ms-transform: skew(-5deg);
   -o-transform: skew(-5deg);
-  -webkit-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  -ms-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -ms-transition: all 0.25s ease-in-out;
+  -o-transition: all 0.25s ease-in-out;
 }
 .location .details {
   margin-right: 5%;
@@ -1439,6 +1447,7 @@ legend {
   -o-transform: skew(0deg);
   background: #f1f1f1;
   opacity: 1;
+  z-index: 10;
 }
 .location:hover a {
   color: #000;
@@ -1462,6 +1471,27 @@ legend {
 .location:hover .btn.checkout-button:hover {
   background: #FF7F7F;
   border-color: #FF7F7F;
+}
+.location .address {
+  margin-bottom: 25%;
+}
+@media screen and (max-width: 668px) {
+  .location {
+    -webkit-flex-wrap: wrap;
+    -moz-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+  .location .star {
+    width: 6.5%;
+  }
+  .location .btn,
+  .location .numDogs {
+    position: static;
+  }
+  .location .numDogs {
+    margin: 10% 0;
+  }
 }
 .info-window {
   text-align: center;
