@@ -8,7 +8,7 @@
   </div>
   <div class="container">
     <% include ../partials/show/checkin-overlay.ejs %>
-    <div class="results-container">
+    <div class="results-container<% if (user) { %> logged-in<% } %>">
        <% for(var i = 0; i < venues.length; i++){ %>
         <div class="location<% if (user && venues[i].favorite) { %> favorite<% } %>">
           <div class='park hidden-val'>

@@ -2,6 +2,26 @@
 @import './old-css.less';
 
 //Banner
+.navbar-default {
+	background: #e0e0e0;
+	.navbar-toggle {
+		border-color: transparent;
+		background-color: transparent;
+		&:hover {
+			border-color: transparent;
+			background-color: transparent;
+		}
+		&:focus {
+			border-color: transparent;
+			background-color: transparent;
+		}
+	}
+}
+.navbar-form {
+	padding: 0 15px;
+	border-bottom: none;
+	border-top: none;
+}
 @media screen and (max-width: 668px) {
 	ul.nav {
 		.transform(skew(0deg));
@@ -177,9 +197,6 @@ legend {
 			}
 		}
 	}
-	.address {
-		margin-bottom: 25%;
-	}
 	@media screen and (max-width: 668px) {
 		.transform(skew(-5deg));
 		.flex-wrap(wrap);
@@ -193,6 +210,14 @@ legend {
 			margin: 10% 0;
 		}
 	}
+}
+.logged-in {
+	.location {
+		.address {
+			margin-bottom: 25%;
+		}
+	}
+
 }
 .info-window {
 	text-align: center;
