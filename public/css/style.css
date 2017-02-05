@@ -1334,6 +1334,10 @@ legend {
 #reg-form .password-characters {
   color: #000;
 }
+.geo-popup {
+  height: 100vh;
+  width: 100%;
+}
 .geo-popup .copy {
   display: -webkit-flex;
   display: -moz-flex;
@@ -1477,6 +1481,10 @@ legend {
 }
 @media screen and (max-width: 668px) {
   .location {
+    -webkit-transform: skew(-5deg);
+    -moz-transform: skew(-5deg);
+    -ms-transform: skew(-5deg);
+    -o-transform: skew(-5deg);
     -webkit-flex-wrap: wrap;
     -moz-flex-wrap: wrap;
     -ms-flex-wrap: wrap;
