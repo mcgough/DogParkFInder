@@ -136,6 +136,9 @@ ul.nav {
   transition: all 0.25s ease-in-out;
   height: 50px;
 }
+.navbar-nav > li a {
+  letter-spacing: .5px;
+}
 .navbar-nav > li:hover {
   border-bottom: 1px solid #ccc;
   background: #ccc;
@@ -178,6 +181,10 @@ ul.nav {
 }
 #header-list {
   text-align: right;
+}
+.btn,
+input {
+  letter-spacing: .5px;
 }
 .header-button {
   margin-right: 15px;
@@ -768,6 +775,9 @@ ul.nav {
   transition: all 0.25s ease-in-out;
   height: 50px;
 }
+.navbar-nav > li a {
+  letter-spacing: .5px;
+}
 .navbar-nav > li:hover {
   border-bottom: 1px solid #ccc;
   background: #ccc;
@@ -810,6 +820,10 @@ ul.nav {
 }
 #header-list {
   text-align: right;
+}
+.btn,
+input {
+  letter-spacing: .5px;
 }
 .header-button {
   margin-right: 15px;
@@ -1392,13 +1406,104 @@ legend {
   }
 }
 .container {
-  position: relative;
   height: 50vh;
 }
 .checkins-overlay {
   visibility: hidden;
+  -webkit-opacity: 0;
+  -moz-opacity: 0;
   opacity: 0;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 15;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+}
+.checkins-overlay.visible {
+  visibility: visible;
+  -webkit-opacity: 1;
+  -moz-opacity: 1;
+  opacity: 1;
+}
+.checkins-overlay .close {
+  cursor: pointer;
   position: absolute;
+  top: 80px;
+  right: 20px;
+  width: 25px;
+  height: 25px;
+  -webkit-opacity: 1;
+  -moz-opacity: 1;
+  opacity: 1;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+}
+.checkins-overlay .close span {
+  width: 25px;
+  border: 2px solid #fff;
+  display: block;
+  position: absolute;
+  top: 10px;
+}
+.checkins-overlay .close span:first-of-type {
+  -webkit-transform: rotate(135deg);
+  -moz-transform: rotate(135deg);
+  -ms-transform: rotate(135deg);
+  -o-transform: rotate(135deg);
+}
+.checkins-overlay .close span:last-of-type {
+  -webkit-transform: rotate(-135deg);
+  -moz-transform: rotate(-135deg);
+  -ms-transform: rotate(-135deg);
+  -o-transform: rotate(-135deg);
+}
+.checkins-overlay .list {
+  margin-top: 15vh;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-flex-pack: center;
+  -ms-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-flex-align: center;
+  -ms-align-items: center;
+  align-items: center;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+.checkins-overlay .list .list-details h3 {
+  color: #fff;
+  letter-spacing: .5px;
+  text-align: center;
+  margin-bottom: 10%;
+}
+.checkins-overlay .list .checkins-list ul {
+  padding: 0;
+  margin: 0;
+}
+.checkins-overlay .list .checkins-list li {
+  color: #fff;
+  font-size: 1.7em;
+  letter-spacing: 1px;
+  margin-bottom: 1.5%;
 }
 .location {
   width: 48%;
@@ -1444,6 +1549,9 @@ legend {
 .location .location-dog {
   width: 25px;
   margin-right: 5px;
+}
+.location .distance {
+  letter-spacing: .5px;
 }
 .location .park {
   margin-bottom: 0;

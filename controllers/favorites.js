@@ -128,29 +128,38 @@ router.get('/:id',function(req,res){
     console.log('nothing there ###########');
   } else {
     var parkid = id.slice(1);
-    var checkin = {};
-    var dogs = {};
-    var parkName = [];
-    db.park.find({where:{id:parkid}}).then(function(name){
-      parkName.push(name)
-    }).then(function(){
-    db.checkin.findAll({where:{parkId: parkid}}).then(function(park){
-      park.forEach(function(item){
-        checkin[item.userId] = item.createdAt;
-        // peopleIds.push(item.userId);
-      })
-    }).then(function(){
-      db.user.findAll().then(function(person){
-        person.forEach(function(item){
-          dogs[item.id] = item.username
-        })
-      }).then(function(){
-      res.send({checkin:checkin,dogs:dogs,user:user,parkName:parkName})
-    }).catch(function(err){
-      console.log(err)
+    var parkName = undefined;
+    var users = [];
+    var userNames = [];
+    db.park.find({where:{id:parkid}}).then(function(park){
+      parkName = park.name;
+      console.log(parkName);
     })
-  })
-  })
+    .then(function(){
+      db.checkin.findAll({where:{parkId: parkid}}).then(function(parkCheckins){
+        parkCheckins.forEach(function(item){
+          if (withInHourCheck(item.createdAt)) {
+            users.push(item.userId);
+          }
+        })
+      })
+      .then(function(){
+        async.each(users, function(userId,callback) {
+          db.user.find({where: {id: userId}})
+            .then(function(user) {
+              console.log('######',user.username);
+              userNames.push(user.username);
+              callback();
+            })
+        }, function(error) {
+          if (error) {
+            res.json({err:error});
+          } else {
+            res.json({userNames:userNames,park: parkName});
+          }
+        })
+      })
+    })
     
   }
 })

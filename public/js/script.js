@@ -48,14 +48,27 @@ $(function(){
     })
   }
 
-  $('.checkin-list').on('submit',function(e) {
+  $('.checkin-list').on('click',function(e) {
     e.preventDefault();
-    var href = $(this).attr('href');
+    var href = $(this).attr('href'),
+        $overlay = $('.checkins-overlay'),
+        $list = $('.checkins-list ul');
     $.ajax({
       type: 'GET',
       url: href,
       success: function(data) {
-        console.log(data);
+        var userNames = data.userNames;
+        $list.empty();
+        if (userNames.length === 0) {
+          var el = "<li class='userName'>Nobody's checked-in right now</li>";
+          $list.append(el);
+        } else {
+          for (var i = 0; i < userNames.length; i++) {
+            var el = "<li class='userName'>" + userNames[i] + "</li>";
+            $list.append(el);
+          }
+        }
+        $overlay.addClass('visible');
       },
       error: function(data) {
         console.log('error',data);
@@ -63,6 +76,9 @@ $(function(){
     })
   })
 
+  $('.checkins-overlay .close').on('click', function() {
+    $('.checkins-overlay').removeClass('visible');
+  })
 
 })
 

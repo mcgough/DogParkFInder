@@ -124,13 +124,76 @@ legend {
 }
 	
 .container {
-	position: relative;
+	// position: relative;
 	height: 50vh;
 }
 .checkins-overlay {
 	visibility: hidden;
-	opacity: 0;
-	position: absolute;
+	.opacity(0);
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	height: 100vh;
+	width: 100%;
+	background: rgba(0,0,0,.85);
+	z-index: 15;
+	.transition(all .3s ease-in-out);
+	&.visible {
+		visibility: visible;
+		.opacity(1);
+	}
+	.close {
+		cursor: pointer;
+		position: absolute;
+		top: 80px;
+		right: 20px;
+		width: 25px;
+		height: 25px;
+		.opacity(1);
+		.transition(all .3s ease-in-out);
+		span {
+			width: 25px;
+			border: 2px solid #fff;
+			display: block;
+			position: absolute;
+			top: 10px;
+			&:first-of-type {
+				.transform(rotate(135deg));
+			}
+			&:last-of-type {
+				.transform(rotate(-135deg));
+			}
+		}
+	}
+	.list {
+		margin-top: 15vh;
+		.flex-display();
+		.justify-content(center);
+		.align-items(center);
+		.flex-direction(column);
+		.list-details {
+			h3 {
+				color: #fff;
+				letter-spacing: .5px;
+				text-align: center;
+				margin-bottom: 10%;
+			}
+		}
+		.checkins-list {
+			ul {
+				padding: 0;
+				margin: 0;
+			}
+			li {
+				color: #fff;
+				font-size: 1.7em;
+				letter-spacing: 1px;
+				margin-bottom: 1.5%;
+			}
+		}
+	}
 }
 .location {
 	width: 48%;
@@ -166,6 +229,10 @@ legend {
 		width: 25px;
 		margin-right: 5px;
 	}
+	.distance {
+		letter-spacing: .5px;
+	}
+		
 	.park {
 		margin-bottom: 0;
 	}
