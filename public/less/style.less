@@ -4,6 +4,7 @@
 //Banner
 .navbar-default {
 	background: #e0e0e0;
+	border-bottom: none;
 	.navbar-toggle {
 		border-color: transparent;
 		background-color: transparent;
@@ -152,6 +153,10 @@ legend {
 		letter-spacing: .5px;
 		margin-bottom: 5px;
 	}
+	.address a {
+		letter-spacing: .5px;
+		color: #7e7e7e !important;
+	}
 	.numDogs {
 		position: absolute;
 		bottom: 15px;
@@ -182,6 +187,9 @@ legend {
 		}
 		&.remove-button {
 			color: #000;
+			@media screen and (max-width: 768px) {
+				color: #fff;
+			}
 		}
 		@media screen and (max-width: 768px) {
 			background: #66B266;
@@ -189,7 +197,7 @@ legend {
 			color: #fff;
 			&.checkin-button {
 				background: #FFC04C;
-				border-color: #FFC04C;	
+				border-color: #FFC04C;
 			}
 			&.remove-button {
 				background: #FF7F7F;
@@ -197,7 +205,7 @@ legend {
 			}
 			&.checkout-button {
 				background: #FF7F7F;
-				border-color: #FF7F7F;				
+				border-color: #FF7F7F;			
 			}
 		}
 	}
@@ -220,6 +228,9 @@ legend {
 		.btn {
 			.transform(skew(0deg));
 			color: #000;
+			@media screen and (max-width: 768px) {
+				color: #fff;
+			}
 			&:hover {
 				background: #66B266;
 				border-color: #66B266;
