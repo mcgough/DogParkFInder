@@ -532,17 +532,11 @@ a {
   .welcome-text {
     width: 100%;
   }
-  .numDogs {
-    padding-left: 10px;
-  }
   .welcome-old {
     font-size: 2.5em;
   }
   .welcome-form {
     margin-top: 25px;
-  }
-  .remove-button {
-    margin-left: -25px;
   }
   .checkin-form {
     margin-right: 0;
@@ -1170,17 +1164,11 @@ a {
   .welcome-text {
     width: 100%;
   }
-  .numDogs {
-    padding-left: 10px;
-  }
   .welcome-old {
     font-size: 2.5em;
   }
   .welcome-form {
     margin-top: 25px;
-  }
-  .remove-button {
-    margin-left: -25px;
   }
   .checkin-form {
     margin-right: 0;
@@ -1303,6 +1291,16 @@ a {
     height: auto;
   }
 }
+legend,
+.contact,
+.about {
+  margin-top: 35% !important;
+  font-family: 'Old Standard TT', serif;
+}
+.contact-text {
+  width: 90%;
+  margin: auto;
+}
 .welcome-form input {
   padding: 30px;
 }
@@ -1387,6 +1385,11 @@ legend {
 .my-close {
   cursor: pointer;
 }
+@media screen and (max-width: 668px) {
+  .results-container {
+    width: 85%;
+  }
+}
 .container {
   position: relative;
   height: 50vh;
@@ -1424,6 +1427,11 @@ legend {
 .location .star img {
   width: 100%;
 }
+.location .park-name {
+  line-height: 1.1;
+  letter-spacing: .5px;
+  margin-bottom: 5px;
+}
 .location .numDogs {
   position: absolute;
   bottom: 15px;
@@ -1457,6 +1465,31 @@ legend {
   -moz-transition: all 0.25s ease-in-out;
   -ms-transition: all 0.25s ease-in-out;
   -o-transition: all 0.25s ease-in-out;
+}
+.location .btn.checkin-button {
+  right: 60px;
+}
+.location .btn.remove-button {
+  color: #000;
+}
+@media screen and (max-width: 768px) {
+  .location .btn {
+    background: #66B266;
+    border-color: #66B266;
+    color: #fff;
+  }
+  .location .btn.checkin-button {
+    background: #FFC04C;
+    border-color: #FFC04C;
+  }
+  .location .btn.remove-button {
+    background: #FF7F7F;
+    border-color: #FF7F7F;
+  }
+  .location .btn.checkout-button {
+    background: #FF7F7F;
+    border-color: #FF7F7F;
+  }
 }
 .location .details {
   margin-right: 5%;
@@ -1493,6 +1526,10 @@ legend {
   border-color: #FFC04C;
 }
 .location:hover .btn.checkout-button:hover {
+  background: #FF7F7F;
+  border-color: #FF7F7F;
+}
+.location:hover .btn.remove-button:hover {
   background: #FF7F7F;
   border-color: #FF7F7F;
 }

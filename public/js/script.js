@@ -23,7 +23,7 @@ $(function(){
     })
   })
 
-  $('.remove-form').on('click',function(e){
+  $('.remove-form').on('submit',function(e){
     e.preventDefault();
     var form = $(this);
     $.ajax({
@@ -31,7 +31,7 @@ $(function(){
       url: form.attr('action'),
       data: form.serialize()
     }).done(function(){
-      form.parent().parent().fadeOut();
+      form.parent().parent().parent().fadeOut();
       $('.checkin-button').each(function(){
         $(this).removeClass('hidden');
       })
@@ -48,7 +48,7 @@ $(function(){
     })
   }
 
-  $('.checkin-list').on('click',function(e) {
+  $('.checkin-list').on('submit',function(e) {
     e.preventDefault();
     var href = $(this).attr('href');
     $.ajax({

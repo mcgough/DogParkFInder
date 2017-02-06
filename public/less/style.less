@@ -29,6 +29,14 @@
 	}
 }
 
+legend,.contact,.about {
+	margin-top: 35% !important;
+	font-family: 'Old Standard TT', serif;
+}
+.contact-text {
+	width: 90%;
+	margin: auto;
+}
 //homepage
 .welcome-form input {
 	padding: 30px;
@@ -107,6 +115,13 @@ legend {
 
 
 //Results Page
+
+.results-container {
+	@media screen and (max-width: 668px) {
+		width: 85%;
+	}
+}
+	
 .container {
 	position: relative;
 	height: 50vh;
@@ -131,6 +146,11 @@ legend {
 		img {
 			width: 100%;
 		}
+	}
+	.park-name {
+		line-height: 1.1;
+		letter-spacing: .5px;
+		margin-bottom: 5px;
 	}
 	.numDogs {
 		position: absolute;
@@ -157,6 +177,29 @@ legend {
 		right: 15px;
 		.transform(skew(-5deg));
 		.transition(all .25s ease-in-out);
+		&.checkin-button {
+			right: 60px;
+		}
+		&.remove-button {
+			color: #000;
+		}
+		@media screen and (max-width: 768px) {
+			background: #66B266;
+			border-color: #66B266;
+			color: #fff;
+			&.checkin-button {
+				background: #FFC04C;
+				border-color: #FFC04C;	
+			}
+			&.remove-button {
+				background: #FF7F7F;
+				border-color: #FF7F7F;
+			}
+			&.checkout-button {
+				background: #FF7F7F;
+				border-color: #FF7F7F;				
+			}
+		}
 	}
 	.details {
 		margin-right: 5%;
@@ -193,6 +236,12 @@ legend {
 					background: #FF7F7F;
 					border-color: #FF7F7F;
 					
+				}
+			}
+			&.remove-button {
+				&:hover {
+					background: #FF7F7F;
+					border-color: #FF7F7F;
 				}
 			}
 		}

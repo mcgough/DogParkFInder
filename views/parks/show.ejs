@@ -35,7 +35,7 @@
           <% } %>
           </div>
           <% if(user) { %>
-          <div>
+          <div class="actions">
             <% if (!venues[i].favorite){ %>
             <form action='/favorites/add' method='post' class='hidden-form add-form'>
               <input type='hidden' name='name' value='<%= venues[i].name %>'>
@@ -46,6 +46,11 @@
             </form>
             <% } %>
             <% if (venues[i].favorite && !userHerePark) { %>
+            <form action='/favorites/remove' method='post' class='remove-form'>
+              <input type='hidden' name='parkid' value='<%= venues[i].appParkId %>'>
+              <input type='hidden' name='userid' value='<%= user.id %>'>
+              <button type='submit' class='btn btn-danger remove-button'><i class='glyphicon glyphicon-trash danger'></i></button>
+            </form>
             <form action='/favorites/checkin' method='post' class='checkin-form'>
               <input type='hidden' name='parkid' value='<%= venues[i].appParkId %>'>
               <input type='hidden' name='userid' value='<%= user.id %>'>
@@ -59,10 +64,10 @@
                 <button type='submit' class='btn checkout-button'>Checkout</button>
               </form>
             <% } %>
-            <% if (venues[i].favorite) { %>
-            <div class='star'><img src="./../images/orange_star.png"></div>
-            <% } %>
           </div>
+          <% if (venues[i].favorite) { %>
+          <div class='star'><img src="./../images/orange_star.png"></div>
+          <% } %>
           <% } %>
         </div>
         </div>
