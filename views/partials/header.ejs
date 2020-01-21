@@ -1,91 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>DogParkFinder</title>
-  <!-- Latest compiled and minified CSS & JS -->
-  <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
-  <link rel="apple-touch-icon-precomposed" href="/images/dog-park-15-152-260714.png">
-  <link rel="stylesheet" media="screen" href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-  <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-  <link rel='stylesheet' href='/css/style.css'>
-  <link href='//fonts.googleapis.com/css?family=Old+Standard+TT:400,700' rel='stylesheet' type='text/css'>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="//code.jquery.com/jquery.js"></script>
-  <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <title>DogParkFinder</title>
+    <!-- Latest compiled and minified CSS & JS -->
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
+    <link
+      rel="apple-touch-icon-precomposed"
+      href="/images/dog-park-15-152-260714.png"
+    />
+    <link
+      rel="stylesheet"
+      media="screen"
+      href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
+    />
+    <link
+      href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link
+      href="//fonts.googleapis.com/css?family=Old+Standard+TT:400,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="//code.jquery.com/jquery.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
-  <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    <script>
+      (function(i, s, o, g, r, a, m) {
+        i["GoogleAnalyticsObject"] = r;
+        (i[r] =
+          i[r] ||
+          function() {
+            (i[r].q = i[r].q || []).push(arguments);
+          }),
+          (i[r].l = 1 * new Date());
+        (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m);
+      })(
+        window,
+        document,
+        "script",
+        "//www.google-analytics.com/analytics.js",
+        "ga"
+      );
 
-  ga('create', 'UA-62339503-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
-</head>
-<body>
-<nav class="navbar navbar-default header-navbar" role="navigation">
-  <!-- Brand and toggle get grouped for better mobile display -->
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <a class="navbar-brand" href="/"><img src='/images/dog-park-15-152-260714.png' class='dogbone-nav'></a>
-    <% if(user) { %>
-    <a href='/favorites/index'><span class='glyphicon glyphicon-heart header-heart hidden'></span></a>
-    <% } %>
-  </div>
-
-  <!-- Collect the nav links, forms, and other content for toggling -->
-  <div class="collapse navbar-collapse navbar-ex1-collapse">
-    <ul class="nav navbar-nav text-center">
-    <% if(user) { %>
-       <li class='active'>
-        <a href="/favorites/index">Favorites</a>
-      </li>
-      <li class='hidden'>
-        <a href='/auth/login'>Log In</a>
-      </li>
-      <li>
-        <a href='/auth/logout'>Log Out</a>
-      </li>
-            <% }else{ %>
-       <li class="hidden">
-        <a href="/favorites/index">Favorites</a>
-      </li>
-      <li>
-        <a href='/auth/login'>Log In</a>
-      </li>
-        <li>
-            <a href='/auth/register'>Register</a>
-        </li>
-       <li class="hidden">
-        <a href='/auth/logout'>Log Out</a>
-      </li>
-      <% } %>
-      <li>
-        <a href='/contact'>Contact</a>
-        </li>
-        <li>
-          <a href='/about'>About</a>
-
-        </li>
-    </ul>
-    <form class="navbar-form navbar-right text-center" role="search" action="/parks/search" method="get">
-      <div class="form-group">
-        <input type="text" class="form-control" name='q' placeholder="Search for new parks">
+      ga("create", "UA-62339503-1", "auto");
+      ga("send", "pageview");
+    </script>
+  </head>
+  <body>
+    <nav class="navbar navbar-default header-navbar" role="navigation">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button
+          type="button"
+          class="navbar-toggle"
+          data-toggle="collapse"
+          data-target=".navbar-ex1-collapse"
+        >
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/"
+          ><img src="/images/dog-park-15-152-260714.png" class="dogbone-nav"
+        /></a>
+        <% if(user) { %>
+        <a href="/favorites/index"
+          ><span class="glyphicon glyphicon-heart header-heart hidden"></span
+        ></a>
+        <% } %>
       </div>
-      <button type="submit" class="btn btn-default">Search</button>
-    </form>
-  </div><!-- /.navbar-collapse -->
-</nav>
-<div class='page-content'>
 
-
-
-
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <ul class="nav navbar-nav text-center">
+          <% if(user) { %>
+          <li class="active">
+            <a href="/favorites/index">Favorites</a>
+          </li>
+          <li class="hidden">
+            <a href="/auth/login">Log In</a>
+          </li>
+          <li>
+            <a href="/auth/logout">Log Out</a>
+          </li>
+          <% }else{ %>
+          <li class="hidden">
+            <a href="/favorites/index">Favorites</a>
+          </li>
+          <li>
+            <a href="/auth/login">Log In</a>
+          </li>
+          <li>
+            <a href="/auth/register">Register</a>
+          </li>
+          <li class="hidden">
+            <a href="/auth/logout">Log Out</a>
+          </li>
+          <% } %>
+          <li>
+            <a href="/contact">Contact</a>
+          </li>
+          <li>
+            <a href="/about">About</a>
+          </li>
+        </ul>
+        <form
+          class="navbar-form navbar-right text-center"
+          role="search"
+          action="/parks/search"
+          method="get"
+        >
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              name="q"
+              placeholder="Search for new parks"
+            />
+          </div>
+          <button type="submit" class="btn btn-default">Search</button>
+        </form>
+      </div>
+      <!-- /.navbar-collapse -->
+    </nav>
+    <div class="page-content"></div>
+  </body>
+</html>

@@ -1,30 +1,45 @@
 <% include ../partials/header.ejs %>
-<div class='row alerts'>
+<div class="row alerts">
   <% include ../partials/alerts.ejs %>
-
 </div>
-<form action="/auth/register" method="POST" role="form" id='reg-form'>
-  <legend id='register-legend'>Register</legend>
+<form action="/auth/register" method="POST" role="form" id="reg-form">
+  <legend id="register-legend">Register</legend>
   <div class="form-group">
     <label for="">Email</label>
-    <input type="text" name='email' class="form-control" id="reg-email" placeholder="Email">
+    <input
+      type="text"
+      name="email"
+      class="form-control"
+      id="reg-email"
+      placeholder="Email"
+    />
   </div>
   <div class="form-group">
     <label for="">Username</label>
-    <input type="text" name='username' class="form-control" id="" placeholder="Username">
+    <input
+      type="text"
+      name="username"
+      class="form-control"
+      id=""
+      placeholder="Username"
+    />
   </div>
   <div class="form-group">
-    <label for="">Password<small class='password-characters'> (must be at least 8 characters long)</small></label>
-    <input type="password" name='password' class="form-control" id="" placeholder="Password">
+    <label for=""
+      >Password<small class="password-characters">
+        (must be at least 8 characters long)</small
+      ></label
+    >
+    <input
+      type="password"
+      name="password"
+      class="form-control"
+      id=""
+      placeholder="Password"
+    />
   </div>
 
-
-
-  <button type="submit" class='btn btn-default reg-button'>Submit</button>
+  <button type="submit" class="btn btn-default reg-button">Submit</button>
 </form>
-
-
-
-
 
 <% include ../partials/footer.ejs %>

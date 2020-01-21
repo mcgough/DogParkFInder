@@ -1,63 +1,57 @@
-var express = require('express');
+var express = require("express");
 var app = express();
-var bodyParser = require('body-parser');
-var request = require('request');
-var session = require('express-session');
-var flash = require('connect-flash');
+var bodyParser = require("body-parser");
+var request = require("request");
+var session = require("express-session");
+var flash = require("connect-flash");
 
-require('dotenv').config();
+require("dotenv").config();
 
-app.use(express.static(__dirname + '/public'));
-app.use(bodyParser.urlencoded({extended:false}));
-app.use(session({
-  secret: 'ksadjflkdjflkajsd',
-  resave: false,
-  saveUninitialized: true
-}))
+app.use(express.static(__dirname + "/public"));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(
+  session({
+    secret: "ksadjflkdjflkajsd",
+    resave: false,
+    saveUninitialized: true
+  })
+);
 app.use(flash());
-app.use(function(req,res,next){
-  req.getUser = function(){
+app.use(function(req, res, next) {
+  req.getUser = function() {
     return req.session.user || false;
-  }
+  };
   next();
-})
-app.use(function(req,res,next){
+});
+app.use(function(req, res, next) {
   res.locals.alerts = req.flash();
   next();
-})
+});
 
-app.set('view engine','ejs');
+app.set("view engine", "ejs");
 
-app.use('/parks',require('./controllers/parks.js'));
-app.use('/favorites',require('./controllers/favorites.js'))
-app.use('/auth',require('./controllers/auth.js'));
+app.use("/parks", require("./controllers/parks.js"));
+app.use("/favorites", require("./controllers/favorites.js"));
+app.use("/auth", require("./controllers/auth.js"));
 
-
-app.get('/',function(req,res){
+app.get("/", function(req, res) {
   var user = req.getUser();
-  res.render('index',{user:user})
-})
+  res.render("index", { user: user });
+});
 
-app.get('/contact',function(req,res){
+app.get("/contact", function(req, res) {
   var user = req.getUser();
-  res.render('siteinfo/contact',{user:user})
-})
+  res.render("siteinfo/contact", { user: user });
+});
 
-app.get('/about',function(req,res){
+app.get("/about", function(req, res) {
   var user = req.getUser();
-  res.render('siteinfo/about',{user:user})
-})
+  res.render("siteinfo/about", { user: user });
+});
 
-app.get('*', function(req, res){
+app.get("*", function(req, res) {
   var user = req.getUser();
-  res.render('error/error',{user:user});
+  res.render("error/error", { user: user });
 });
 
 app.listen(process.env.PORT || 3000);
-
-
-
-
-
-
-
